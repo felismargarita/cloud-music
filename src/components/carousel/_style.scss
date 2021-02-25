@@ -33,7 +33,7 @@ $carousel-card-width: 542px !default;
   left: 0;
   margin-top: auto;
   margin-bottom: auto;
-  transform: scale3d(0.82,0.82,1);
+  transform: scale(0.82,0.82);
   transition: all 0.5s;
 }
 
@@ -45,7 +45,7 @@ $carousel-card-width: 542px !default;
   left: ($carousel-container-width - $carousel-card-width);
   margin-top: auto;
   margin-bottom: auto;
-  transform: scale3d(0.82,0.82,1);
+  transform: scale(0.82,0.82);
   transition: all 0.5s;
 }
 
@@ -56,7 +56,7 @@ $carousel-card-width: 542px !default;
   top: 0;
   margin: auto;
   transition: all 0.5s;
-  transform: scale3d(0.82,0.82,1);
+  transform: scale(0.82,0.82);
 }
 
 .carousel-button-left {
