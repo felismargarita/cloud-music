@@ -2,6 +2,7 @@ import '@/styles/style.scss';
 import Carousel from '@/components/carousel/Carousel';
 import Card from '@/components/card/Card'
 import RecommendCard from '@/components/recommendCard/RecommendCard'
+import Menu from '@/components/menu/Menu'
 const cards = [
   {
     text: '独家',
@@ -33,7 +34,14 @@ export default function IndexPage() {
   return (
     <div className="index-page">
       {/* <Carousel cards={cards}/> */}
-      <RecommendCard/>
+      {/* <RecommendCard/> */}
+      <Menu mode="vertical" title="我的音乐" closeable>
+        <Menu.Item index={1}>发现音乐</Menu.Item>
+        <Menu.Item index={2}>视频</Menu.Item>
+        <Menu.Item index={3}>朋友</Menu.Item>
+        <Menu.Item index={4}>直播</Menu.Item>
+        <Menu.Item index={5}>私人FM</Menu.Item>
+      </Menu>
     </div>
   );
 }

@@ -1,0 +1,62 @@
+.cloud-music-menu {
+  list-style-type: none;
+  display: flex;
+
+  // 清除默认样式
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
+}
+.cloud-music-menu-title {
+  color: #CF9F9F;
+  font-weight: 300;
+  font-size: 13px;
+  padding: 6px 0 6px 6px;
+}
+.cloud-music-menu-title-icon {
+  font-size: 10px;
+  padding-left: 4px;
+}
+.cloud-music-menu-vertical {
+  flex-direction: column;
+}
+
+.cloud-music-menu-item {
+  font-size: 16px ;
+  margin: 8px 13px;
+  cursor: pointer;
+}
+
+.cloud-music-menu-item-selected {
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  margin: 4px 13px;
+  &::after {
+    content: '';
+    width: 80%;
+    height: 3px;
+    background: $primary-color;
+    position: absolute;
+    bottom: -6px;
+    left: 10%;
+  }
+}
+
+.cloud-music-menu-item-vertical {
+  font-size: 16px;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  &:hover {
+    background: #F6F6F7;
+  }
+}
+.cloud-music-menu-item-selected-vertical {
+  font-size: 17px;
+  font-weight: 600;
+  position: relative;
+  background: #F6F6F7;
+}
