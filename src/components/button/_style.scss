@@ -1,0 +1,13 @@
+.cloud-music-start-button{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: $grey-1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cloud-music-start-btn-icon{
+  color: $primary-color;
+  font-size: 18px;
+}

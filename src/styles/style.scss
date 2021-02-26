@@ -15,12 +15,16 @@ $grey-11: #1f1f1f !default;
 $grey-12: #141414 !default;
 $grey-13: #000000 !default;
 
-.index-page {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+// .index-page {
+
+//   // height: 100vh;
+//   // width: 100vw;
+//   // display: flex;
+//   // justify-content: center;
+//   // align-items: center;
+// }
 
 @import '../components/carousel/style';//走马灯-整体样式
+@import '../components/card/style';//通用卡片样式
+@import '../components/recommendCard/style';//推荐歌单卡片
+@import '../components/button/style';//播放按钮

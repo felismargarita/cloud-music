@@ -1,5 +1,7 @@
 import '@/styles/style.scss';
 import Carousel from '@/components/carousel/Carousel';
+import Card from '@/components/card/Card'
+import RecommendCard from '@/components/recommendCard/RecommendCard'
 const cards = [
   {
     text: '独家',
@@ -30,7 +32,8 @@ const cards = [
 export default function IndexPage() {
   return (
     <div className="index-page">
-      <Carousel cards={cards} />
+      {/* <Carousel cards={cards}/> */}
+      <RecommendCard/>
     </div>
   );
 }

@@ -1,0 +1,29 @@
+.cloud-music-recommend-card{
+  height: 136px;
+  width: 136px;
+  cursor: pointer;
+}
+
+.cloud-music-recommend-statistic{
+  font-size: 12px;
+  margin-right: 8px;
+  color: $grey-1;
+}
+.cloud-music-recommend-statistic-icon{
+  margin-right: 2px;
+}
+.cloud-music-reco-btn {
+  margin: 10px;
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+
+.cloud-music-reco-btn-hidden{
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.cloud-music-reco-text{
+  text-overflow: ellipsis;
+  line-clamp: 2;
+}
