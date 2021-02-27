@@ -1,0 +1,25 @@
+.cloud-music-layout-header {
+  height: 60px;
+  width: 1021px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: $primary-color;
+}
+
+.cloud-music-header-logo {
+  font-size: 17px;
+  font-weight: 500;
+  color: #fff;
+  display: inline;
+  line-height: 60px;
+  margin-left: 22px;
+  letter-spacing: 2px;
+}
+.cloud-music-header-text{
+  margin-left: 4px;
+}
+
+.cloud-music-header-icon {
+  font-size: 24px;
+}

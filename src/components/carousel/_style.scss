@@ -1,6 +1,6 @@
-$carousel-container-width: 900px !default; 
+$carousel-container-width: 785px !default; 
 $carousel-card-width: 542px !default;
-
+$carousel-offset: -36px !default;
 @import './button/style';
 @import './card/style';
 @import './dots/style';
@@ -30,7 +30,7 @@ $carousel-card-width: 542px !default;
   z-index: 998;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: $carousel-offset;
   margin-top: auto;
   margin-bottom: auto;
   transform: scale(0.82,0.82);
@@ -42,7 +42,7 @@ $carousel-card-width: 542px !default;
   z-index: 998;
   top: 0;
   bottom: 0;
-  left: ($carousel-container-width - $carousel-card-width);
+  left: ($carousel-container-width - $carousel-card-width - $carousel-offset);
   margin-top: auto;
   margin-bottom: auto;
   transform: scale(0.82,0.82);
@@ -61,7 +61,7 @@ $carousel-card-width: 542px !default;
 
 .carousel-button-left {
   position: absolute;
-  left: $carousel-card-width * 0.09+10px;
+  left: $carousel-card-width * 0.09+$carousel-offset+10px;
   bottom: 0;
   top: 0;
   margin: auto;
@@ -70,7 +70,7 @@ $carousel-card-width: 542px !default;
 
 .carousel-button-right {
   position: absolute;
-  right: $carousel-card-width * 0.09+10px;
+  right: $carousel-card-width * 0.09+10px+$carousel-offset;
   bottom: 0;
   top: 0;
   margin: auto;

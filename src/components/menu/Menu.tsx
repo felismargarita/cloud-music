@@ -35,7 +35,13 @@ const Menu:React.FC<MenuProps> & {Item:React.FC<ItemProps>}= ({children,onSelect
       style={{cursor:closeable ? 'pointer' : 'default'}} 
       className="cloud-music-menu-title">{title}
       {
-        close ? <CaretRightOutlined className="cloud-music-menu-title-icon"/> : <CaretDownOutlined className="cloud-music-menu-title-icon"/>
+        closeable 
+        ?
+        (        
+          close ? <CaretRightOutlined className="cloud-music-menu-title-icon"/> : <CaretDownOutlined className="cloud-music-menu-title-icon"/>
+        )
+        :
+        null
       }
       </div> 
       :

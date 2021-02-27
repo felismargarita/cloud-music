@@ -7,7 +7,16 @@ export default defineConfig({
   devServer: {
     port: 9999,
   },
-  routes: [{ path: '/', component: '@/pages/index' }],
+  routes: [{ 
+    path: '/', 
+    component: '@/pages/index',
+    routes:[
+      {
+        path:'/',
+        component:'@/pages/Discovery'
+      }
+    ]
+  }],
   sass: {
     implementation: require('node-sass'),
   },

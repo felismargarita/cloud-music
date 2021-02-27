@@ -15,15 +15,35 @@ $grey-11: #1f1f1f !default;
 $grey-12: #141414 !default;
 $grey-13: #000000 !default;
 
-// .index-page {
 
-//   // height: 100vh;
-//   // width: 100vw;
-//   // display: flex;
-//   // justify-content: center;
-//   // align-items: center;
-// }
+$box-shadow: 1px 1px 5px black !default;
+$border-color: $grey-5;
 
+.cloud-music {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cloud-music-app {
+  position: relative;
+  width: 1021px;
+  height: 669px;
+  box-shadow: $box-shadow;
+}
+
+//滚动条样式
+div::-webkit-scrollbar {
+  width: 6px;
+}
+div::-webkit-scrollbar-thumb {
+  background: $grey-5;
+  border-radius: 2px;
+}
+
+@import '../components/layout/style';//页面布局
 @import '../components/carousel/style';//走马灯-整体样式
 @import '../components/card/style';//通用卡片样式
 @import '../components/recommendCard/style';//推荐歌单卡片
