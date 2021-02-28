@@ -13,7 +13,7 @@ export default defineConfig({
     routes:[
       {
         path:'/',
-        component:'@/pages/Discovery'
+        component:'@/pages/discovery/Discovery'
       }
     ]
   }],

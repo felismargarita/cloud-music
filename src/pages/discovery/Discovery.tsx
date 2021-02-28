@@ -2,6 +2,8 @@ import React from 'react'
 import Menu from '@/components/menu/Menu'
 import Carousel from '@/components/carousel/Carousel'
 import PageHeader from '@/components/header/PageHeader'
+import CalendarCard from './calendar/CalendarCard'
+import moment from 'moment'
 const cards = [
   {
     text:'独家',
@@ -55,6 +57,7 @@ const Discovery = ()=>{
       </Menu>
       <Carousel cards={cards}/>
       <PageHeader content="推荐歌单"/>
+      <CalendarCard time={moment()}/>
     </div>
   )
 }
