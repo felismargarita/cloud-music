@@ -12,6 +12,7 @@ interface CardProps {
   center?:React.ReactElement
   className?:string
   onHoverChange?:(isHover:boolean)=>void
+  isZoomin?:boolean
 }
 
 type PlacementType = 'top'|'bottom'|'left'|'right'|'lt'|'lb'|'rt'|'rb'|'center'
@@ -39,14 +40,18 @@ const elementProcessor = (ele?:React.ReactElement,placement?:PlacementType)=>{
  return  cloneElement(ele,{
     style:{
       position:'absolute',
+      zIndex:100,
       ...getNodeSytle(ele),
       ...placementStyles[placement]
     }
   })
 }
 
-const Card:React.FC<CardProps> = ({lt,lb,rt,rb,top,bottom,right,left,center,children,className,onHoverChange})=>{
+const Card:React.FC<CardProps> = ({lt,lb,rt,rb,top,bottom,right,left,center,children,className,onHoverChange,isZoomin})=>{
 
+  const zoomClasses = classnames({
+    'cloud-music-card-zoom':isZoomin
+  })
   return (
   <div 
   className={classnames('cloud-music-card',className)} 
@@ -61,7 +66,10 @@ const Card:React.FC<CardProps> = ({lt,lb,rt,rb,top,bottom,right,left,center,chil
     {elementProcessor(rt,'rt')}
     {elementProcessor(rb,'rb')}
     {elementProcessor(center,'center')}
-    {React.cloneElement(children as React.ReactElement,{style:{height:'100%',width:'100%'}})}
+    {React.cloneElement(children as React.ReactElement,{
+      style:{height:'100%',width:'100%'},
+      className:zoomClasses
+      })}
   </div>)
 
 }
