@@ -8,3 +8,12 @@
   border-right: 1px solid $border-color;
   overflow-y: auto;
 }
+
+.cloud-music-asider-icon {
+  margin-right: 12px;
+}
+.cloud-music-asider-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
