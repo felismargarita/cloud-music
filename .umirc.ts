@@ -7,6 +7,8 @@ export default defineConfig({
   devServer: {
     port: 9999,
   },
+  publicPath:'/cloudmusic/',
+  base:'/cloudmusic/',
   routes: [{ 
     path: '/', 
     component: '@/pages/index',
