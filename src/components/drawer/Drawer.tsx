@@ -17,7 +17,7 @@ const Drawer:React.FC<DrawerProps> = ({content,className,visible,delay})=>{
         position:'absolute',
         transition:'top 0.3s',
         left: 0,
-        top: timeoutVisible ? 0 : (height ? -height :0)
+        top: timeoutVisible ? 0 : (height ? -(height+1) :0)
     }
     useEffect(()=>{
         setFinish(true)
