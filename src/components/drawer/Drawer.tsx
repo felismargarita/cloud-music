@@ -1,34 +1,48 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import classnames from 'classnames'
 interface DrawerProps {
     content:string
     visible:boolean
-    placement?:'top'|'left'|'right'|'bottom'
     delay?:number
     className?:string
 }
 
-const Drawer:React.FC<DrawerProps> = ({content,className,visible,placement})=>{
+const Drawer:React.FC<DrawerProps> = ({content,className,visible,delay})=>{
     const drawerRef = React.useRef<HTMLDivElement>(null)
     const [renderFinish,setFinish] = React.useState(false)
+    const [timeoutVisible,setVisible] = React.useState(false)
     const classes = classnames('cloud-music-drawer',className)
     const height = drawerRef.current?.clientHeight
     const style:React.CSSProperties = {
         position:'absolute',
         transition:'top 0.3s',
         left: 0,
-        top: visible ? 0 : (height ? -height :0)
+        top: timeoutVisible ? 0 : (height ? -height :0)
     }
-
     useEffect(()=>{
         setFinish(true)
     },[])
 
+
+    //处理防抖,这里采用司徒正美大大的思路简单实现一下:每次抖动都去清理掉timer
+    const timerRef = React.useRef<{timer:any}>({timer:null}) 
+    useEffect(()=>{
+        clearTimeout(timerRef.current.timer)
+        timerRef.current.timer = setTimeout(()=>{
+            setVisible(visible)
+        },delay)
+        return ()=>clearTimeout(timerRef.current.timer)
+    },[visible])
+
     return (
-        <div className={classes} ref={drawerRef} style={{opacity: renderFinish ? 1 : 0,...style}}>
+        <div className={classes} ref={drawerRef} style={renderFinish ? style : {opacity:0}}>
             {content}
         </div>
     )
+}
+
+Drawer.defaultProps = {
+    delay: 0
 }
 
 export default Drawer
