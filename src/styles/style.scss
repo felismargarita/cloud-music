@@ -43,13 +43,17 @@ div::-webkit-scrollbar-thumb {
   border-radius: 2px;
 }
 
+//基础组件
 @import '../components/layout/style';//页面布局
 @import '../components/carousel/style';//走马灯-整体样式
 @import '../components/card/style';//通用卡片样式
-@import '../components/recommendCard/style';//推荐歌单卡片
 @import '../components/button/style';//播放按钮
 @import '../components/menu/_style';//菜单组件
 @import '../components/header/style';//header组件
-@import '../pages/discovery/calendar/style';//推荐页面-日历卡片
 @import '../components/drawer/style';//抽屉
 @import '../components/icons/style'; //图标
+@import '../components/statistic/style';//数量统计
+@import '../components/avatar/style';//头像
+
+//页面组件
+@import '../pages/discovery/style';//发现页面

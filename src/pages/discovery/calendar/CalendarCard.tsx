@@ -2,6 +2,9 @@ import React from 'react'
 import Card from '@/components/card/Card'
 import {Moment} from 'moment'
 import Drawer from '@/components/drawer/Drawer'
+import TextOmitBox from '@/components/textOmit/TextOmitBox'
+import StartButton from '@/components/button/StartButton'
+import classnames from 'classnames'
 interface CalendarCardProps {
     time:Moment
 }
@@ -9,7 +12,9 @@ interface CalendarCardProps {
 const CalendarCard:React.FC<CalendarCardProps> = ({time})=>{
 
     const [isHover,setIsHover] = React.useState(false)
-
+    const btnClasses = classnames('cloud-music-reco-btn',{
+        'cloud-music-reco-btn-hidden':!isHover
+      })
     const calendar = (
         <div className="cloud-music-calendar">
             <div className="cloud-music-calendar-number">
@@ -28,12 +33,24 @@ const CalendarCard:React.FC<CalendarCardProps> = ({time})=>{
     
 
     return (
-    <Card className="cloud-music-calendar-card" 
-        onHoverChange={v=>setIsHover(v)}
-        top={dra}
-        center={calendar}>
-        <div></div>
-    </Card>
+        <div>
+        <Card 
+            className="cloud-music-calendar-card" 
+            onHoverChange={v=>setIsHover(v)}
+            top={dra}
+            rb={<StartButton className={btnClasses}/>}
+            center={calendar}>
+            <div></div>
+        </Card>
+        <div style={{marginTop:'8px'}}>
+            <TextOmitBox 
+                content="每日歌曲推荐"       
+                height={36} 
+                lineHeight={18} 
+                width={136} />
+        </div>
+        </div>
+
     )
 }
 

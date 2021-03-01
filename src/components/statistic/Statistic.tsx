@@ -9,8 +9,8 @@ interface StatisticProps {
 const Statistic:React.FC<StatisticProps> = ({total,style})=>{
 
   return (
-    <div className="cloud-music-recommend-statistic" style={style}>
-      <CaretRightOutlined className="cloud-music-recommend-statistic-icon"/>
+    <div className="cloud-music-statistic" style={style}>
+      <CaretRightOutlined className="cloud-music-statistic-icon"/>
       {numberFormatter(total)}
     </div>
   )

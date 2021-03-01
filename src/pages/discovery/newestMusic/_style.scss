@@ -1,0 +1,39 @@
+.cloud-muisc-newest-card-cotainer {
+  display: flex;
+  width: 240px;
+  cursor: pointer;
+  border-radius: 2px;
+  &:hover {
+    background: $grey-5;
+  }
+}
+
+.cloud-muisc-newest-card {
+  height: 50px;
+  width: 50px;
+}
+
+.cloud-muisc-newest-btn {
+  height: 24px;
+  width: 24px;
+}
+
+.cloud-muisc-newest-info {
+  margin-left: 8px;
+  width: 182px;
+}
+
+.cloud-muisc-newest-title {
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cloud-muisc-newest-singer {
+ font-size: 12px;
+ margin-top: 4px;
+ color: $grey-6; 
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+}

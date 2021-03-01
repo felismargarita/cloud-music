@@ -1,0 +1,15 @@
+@import './calendar/style';//日历卡片
+@import './recommond/style';//推荐卡片
+@import './exclusiveCard/style';//独家放松卡片
+@import './newestMusic/style';//最新音乐卡片
+@import './recoMv/style';//MV卡片
+@import './live/style';//主播电台
+@import './look/style';//看看
+.cloud-music-discovery-carousel {
+  margin-top: 16px;
+}
+.cloud-music-discovery-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
