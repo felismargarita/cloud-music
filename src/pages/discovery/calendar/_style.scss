@@ -53,13 +53,13 @@
     margin-top: 10px;
     user-select: none;
     &::before {
-        width: 130%;
+        width: 54px;
         height: 3px;
         border-radius: 2px;
         position: absolute;
         background: #fff;
         content: '';
-        top: 10%;
-        left: -10%;
+        top: 6%;
+        left: -18px;
     }
   }

@@ -55,7 +55,7 @@ const Discovery = ()=>{
         <Menu.Item index={5}>歌手</Menu.Item>
         <Menu.Item index={6}>最新音乐</Menu.Item>
       </Menu>
-      <Carousel cards={cards}/>
+      <Carousel cards={cards} className="cloud-music-discovery-carousel"/>
       <PageHeader content="推荐歌单"/>
       <CalendarCard time={moment()}/>
     </div>

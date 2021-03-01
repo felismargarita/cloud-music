@@ -5,8 +5,9 @@ import Button from './button/Button';
 import classnames from 'classnames';
 interface CarouselProps {
   cards: Array<{ text: string; img: string }>;
+  className?: string
 }
-const Carousel: React.FC<CarouselProps> = ({ cards }) => {
+const Carousel: React.FC<CarouselProps> = ({ cards,className }) => {
   const [current, setCurrent] = React.useState(0); //当前卡片索引值
   const countRef = React.useRef(0);
   countRef.current = current;
@@ -19,7 +20,7 @@ const Carousel: React.FC<CarouselProps> = ({ cards }) => {
     const isRight =
       index === current + 1 || (current === cards.length - 1 && index === 0);
     const isCurrent = current === index;
-    return classnames('carousel-card-size', {
+    return classnames('carousel-card-size',className, {
       'carousel-card-dock': !(isLeft || isRight || isCurrent),
       'carousel-card-middle': isCurrent,
       'carousel-card-left': isLeft,

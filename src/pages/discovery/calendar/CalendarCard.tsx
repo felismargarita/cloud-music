@@ -20,6 +20,7 @@ const CalendarCard:React.FC<CalendarCardProps> = ({time})=>{
     const dra = (
         <Drawer 
         visible={isHover}
+        delay={1000}
         content="根据您的音乐口味生成每日更新"
         />
     )

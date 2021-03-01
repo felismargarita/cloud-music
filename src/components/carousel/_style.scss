@@ -1,12 +1,12 @@
-$carousel-container-width: 785px !default; 
+$carousel-container-width: 760px !default; 
 $carousel-card-width: 542px !default;
-$carousel-offset: -36px !default;
+$carousel-offset: -48px !default;
 @import './button/style';
 @import './card/style';
 @import './dots/style';
 .carousel-container{
   width: $carousel-container-width;
-  height: 230px;
+  height: 250px;
   position: relative;
 }
 
