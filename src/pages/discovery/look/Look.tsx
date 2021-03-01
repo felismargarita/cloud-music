@@ -20,7 +20,6 @@ const Look:React.FC<LookProps> = ({avatar,from,playCount,img,desc})=>{
     </div>
   )
 
-  console.log(desc)
 
   return (
     <div>

@@ -7,6 +7,15 @@ export default defineConfig({
   devServer: {
     port: 9999,
   },
+  proxy:{
+    '/resourcebed': {
+      target: 'http://felis.top:8101/',
+      pathRewrite: { '^/resourcebed': '' },
+      changeOrigin: true
+    }
+  },
+  favicon:'/cloudmusic/favicon.ico',
+  title:'cloud music',
   publicPath:'/cloudmusic/',
   base:'/cloudmusic/',
   routes: [{ 
