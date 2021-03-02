@@ -1,9 +1,10 @@
 import React from 'react'
+import isFirefox from '@/utils/isFirefox'
 interface TextOmitBoxProps {
-  height:number
-  lineHeight:number
-  width:number
-  content:string
+  height:number //容器高度
+  width:number //容器宽度
+  content:string  //文字内容
+  lineHeight?:number //文字行高
 }
 
 const TextOmitBox:React.FC<TextOmitBoxProps> = ({height,lineHeight,width,content})=>{
@@ -17,10 +18,13 @@ const TextOmitBox:React.FC<TextOmitBoxProps> = ({height,lineHeight,width,content
     if(finishRef.current){
       return
     }
-    const innerScrollHeight= innerRef.current?.scrollHeight
-    const containerOffsetHeight = containerRef.current?.offsetHeight
+    let innerScrollHeight= innerRef.current?.scrollHeight
+    let containerOffsetHeight = containerRef.current?.offsetHeight
     if((innerScrollHeight || innerScrollHeight===0) && containerOffsetHeight){
       loopRef.current++
+      if(isFirefox()){
+        innerScrollHeight --
+      }
       if(innerScrollHeight<=containerOffsetHeight){
         const tmpStr = content.slice(0,loopRef.current)
         if(loopRef.current === content.length){
