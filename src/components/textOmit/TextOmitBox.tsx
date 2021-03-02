@@ -8,7 +8,6 @@ interface TextOmitBoxProps {
 }
 
 const TextOmitBox:React.FC<TextOmitBoxProps> = ({height,lineHeight,width,content})=>{
-
   const containerRef = React.useRef<HTMLDivElement>(null)
   const innerRef = React.useRef<HTMLDivElement>(null)
   const [str,setStr] = React.useState('')
@@ -41,8 +40,15 @@ const TextOmitBox:React.FC<TextOmitBoxProps> = ({height,lineHeight,width,content
     }
   },[str])
 
+  //在渲染成功前需要posiiton:'fixed',使容器脱离文档流,防止出现一些特殊情况下的闪屏
+  const style:React.CSSProperties = {height,width,overflowWrap:'break-word'} 
+  const containerStyle:React.CSSProperties = finishRef.current 
+  ? 
+  style
+  : 
+  {...style,position:'fixed'}
   return (
-  <div style={{height,width,overflowWrap:'break-word'}} ref={containerRef}>
+  <div style={containerStyle} ref={containerRef}>
     <div style={{lineHeight:lineHeight+'px',opacity:finishRef.current ? 1 : 0}} ref={innerRef}>
       {str}
     </div>
