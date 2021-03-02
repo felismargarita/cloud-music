@@ -43,6 +43,11 @@ div::-webkit-scrollbar-thumb {
   border-radius: 2px;
 }
 
+* {
+  scrollbar-color: #e5e5e5 #f7f7f9; /* 滑块颜色  滚动条背景颜色 */
+  scrollbar-width: thin; /* 滚动条宽度有三种：thin、auto、none */
+}
+
 //基础组件
 @import '../components/layout/style';//页面布局
 @import '../components/carousel/style';//走马灯-整体样式
