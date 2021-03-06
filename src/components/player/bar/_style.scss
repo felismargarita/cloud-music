@@ -1,0 +1,23 @@
+.cloud-music-player-bar {
+  position: relative;
+  height: 4px;
+  width: 392px;
+  background: $grey-6;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.cloud-music-player-bar-over {
+  background: $primary-color;
+  border-radius: 2px;
+  height: 4px;
+}
+
+.cloud-music-player-bar-dot {
+  height: 8px;
+  width: 8px;
+  background: $primary-color;
+  border-radius: 50%;
+  position: absolute;
+  top:-2px;
+  margin-left: -4px;
+}

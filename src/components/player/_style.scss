@@ -1,0 +1,29 @@
+.cloud-music-player-hidden-audio {
+  position: fixed;
+  visibility: hidden;
+}
+.cloud-music-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cloud-music-player-btn-group {
+  display: flex;
+  flex-direction: row;
+  width: 224px;
+  justify-content: space-around;
+}
+.cloud-music-player-main-btn {
+  background: $grey-5;
+  transition: all 0.3s;
+  &:hover {
+    background: $grey-6;
+    transition: all 0.3s
+  }
+}
+
+@import './bar/style';
