@@ -1,3 +1,5 @@
+@import './bar/style';
+@import './mode/style';
 .cloud-music-player-hidden-audio {
   position: fixed;
   visibility: hidden;
@@ -15,7 +17,9 @@
   display: flex;
   flex-direction: row;
   width: 224px;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
 }
 .cloud-music-player-main-btn {
   background: $grey-5;
@@ -25,5 +29,3 @@
     transition: all 0.3s
   }
 }
-
-@import './bar/style';

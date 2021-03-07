@@ -25,6 +25,7 @@
     "classnames": "^2.2.6",
     "loadash": "^1.0.0",
     "moment": "^2.29.1",
+    "momnet": "^2.29.1",
     "node-sass": "^4.14.1",
     "react-device-detect": "^1.15.0",
     "react-draggable": "^4.4.3",

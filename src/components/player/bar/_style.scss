@@ -1,15 +1,57 @@
+$hover-height:4px !default;
+$normal-height:3px !default;
+
+.cloud-music-player-time-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+.cloud-music-player-time {
+  color: $grey-7;
+  font-size: 12px;
+  transform: scale(0.9,0.9);
+  padding: 2px;
+}
+
+
 .cloud-music-player-bar {
   position: relative;
-  height: 4px;
   width: 392px;
+  height: $normal-height;
   background: $grey-6;
   border-radius: 2px;
   cursor: pointer;
+  &:hover {
+    height: $hover-height;
+    margin-top: -1px;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -6px;
+    width: 100%;
+    height: 6px;
+    background: #fff;
+  }//扩大点选面积,提升用户体验
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 6px;
+    background: #fff;
+  }//扩大点选面积,提升用户体验
 }
 .cloud-music-player-bar-over {
   background: $primary-color;
   border-radius: 2px;
-  height: 4px;
+  height: $normal-height;
+  &:hover {
+    height: $hover-height;
+    margin-top: -1px;
+  }
 }
 
 .cloud-music-player-bar-dot {
@@ -18,6 +60,7 @@
   background: $primary-color;
   border-radius: 50%;
   position: absolute;
-  top:-2px;
+  top:-3px;
   margin-left: -4px;
+  z-index: 999;
 }

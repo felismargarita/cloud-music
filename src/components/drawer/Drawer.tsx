@@ -24,7 +24,7 @@ const Drawer:React.FC<DrawerProps> = ({content,className,visible,delay})=>{
     },[])
 
 
-    //处理防抖,这里采用司徒正美大大的思路简单实现一下:每次抖动都去清理掉timer
+    //处理防抖,这里采用司徒正美的思路简单实现一下:每次抖动都去清理掉timer
     const timerRef = React.useRef<{timer:any}>({timer:null}) 
     useEffect(()=>{
         clearTimeout(timerRef.current.timer)
