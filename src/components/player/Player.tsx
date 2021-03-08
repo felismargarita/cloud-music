@@ -54,15 +54,24 @@ const Player:React.FC<PlayerProps> = ({url,total})=>{
     }
   },[timer])
 
-  const mainBtn = 
-                status === 'pause'
-                ?
-                <Icon
-                className="cloud-music-player-main-btn"
-                type="cloud"
-                onClick={start}/>
-                :
-                <Icon type="pause" onClick={stop}/>
+  const mainBtn = (
+    <div className="cloud-music-player-main-btn">
+      {
+        status === 'pause'
+        ?
+        <Icon
+          style={{marginRight:'-2px',marginTop:'-2px'}}
+          type="start"
+          onClick={start}/>
+        :
+        <Icon 
+          type="pause" 
+          style={{marginRight:'1px',marginTop:'-2px'}}
+          onClick={stop}/>
+      }
+    </div>
+  )
+
 
   return (
     <div style={{width:'100%',height:'100%'}}>
@@ -70,10 +79,16 @@ const Player:React.FC<PlayerProps> = ({url,total})=>{
       <div className="cloud-music-container">
         <div className="cloud-music-player-btn-group">
           <Mode mode={playMode} onChange={m=>setPlayMode(m)}/>
-          <Icon type="previous" size={18}/>
+          <div className="cloud-music-player-btn">
+            <Icon type="previous" size={18}/>
+          </div>
           {mainBtn}
-          <Icon type="next" size={18}/>
-          <Icon type="next" size={18}/>
+          <div className="cloud-music-player-btn">
+            <Icon type="next" size={18}/>
+          </div>
+          <div className="cloud-music-player-btn">
+            <div style={{fontSize:'12px',marginTop:'2px',fontWeight:600}}>词</div>
+          </div>
         </div>
         <Bar current={timer} total={261} onChange={(offset)=>{
             player().then(audio=>{

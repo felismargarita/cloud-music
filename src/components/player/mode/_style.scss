@@ -1,5 +1,15 @@
-@mixin tooltip {
+
+
+.cloud-music-play-mode {
+    position: relative;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+@mixin tooltipDispaly {
     position: absolute;
+    text-align: center;
     top:-34px;
     left: -45px;
     box-sizing:border-box;
@@ -12,51 +22,47 @@
     background: #000;
     color: #fff;
     z-index: 999;
-    animation: disappear 0.5s ;
-    animation-iteration-count: 1;
-    @keyframes disappear {
-        0%{
-            opacity: 0;
-        }
-        50%{
-            opacity: 1;
-        }
-        100%{
-            opacity: 0;
-        }
-    }
+    opacity: 0.85;
+}
+
+@mixin tooltipHidden {
+    transition:opacity 0.5s;
+    opacity: 0;
+}
+
+.cloud-music-play-mode-oneRound-display {
+    @include tooltipDispaly;
+}
+
+.cloud-music-play-mode-oneRound-hidden {
+    @include tooltipHidden;
+}
+
+.cloud-music-play-mode-random-display {
+    @include tooltipDispaly;
+}
+
+.cloud-music-play-mode-random-hidden {
+    @include tooltipHidden;
+}
+
+.cloud-music-play-mode-allRound-display {
+    @include tooltipDispaly;
+}
+
+.cloud-music-play-mode-allRound-hidden {
+    @include tooltipHidden;
+}
+
+.cloud-music-play-mode-turnList-display {
+    @include tooltipDispaly;
+}
+
+.cloud-music-play-mode-turnList-hidden {
+    @include tooltipHidden;
 }
 
 
-
-.cloud-music-play-mode-random {
-    position: relative;
-    &:after{
-        content: '随机播放';
-        @include tooltip;
-    }
-}
-
-.cloud-music-play-mode-allRound {
-    position: relative;
-    &:after{
-        content: '列表循环';
-        @include tooltip;
-    }
-}
-
-.cloud-music-play-mode-oneRound {
-    position: relative;
-    &:after{
-        content: '单曲循环';
-        @include tooltip;
-    }
-}
-
-.cloud-music-play-mode-turnList {
-    position: relative;
-    &:after{
-        content: '顺序播放';
-        @include tooltip;
-    }
+.cloud-music-play-mode-icon :hover {
+    color: $primary-color;
 }

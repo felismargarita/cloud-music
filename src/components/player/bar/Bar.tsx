@@ -66,6 +66,7 @@ const Bar:React.FC<BarProps> = ({current,total,onChange})=>{
               ?
               <Draggable 
               axis="x" 
+              bounds={{top:position.y,bottom:0,left:0,right:width}}
               position={position}
               onStop={onStop}
               onDrag = {onDarg}>
