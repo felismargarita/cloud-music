@@ -44,13 +44,14 @@ const Player:React.FC<PlayerProps> = ({url,total})=>{
   //处理播放完毕后的逻辑
   useEffect(()=>{
     if(timer === 261){
-      player().then(audio=>{
-        stop() //先暂停,1秒后再重复播放
-        setTimeout(()=>{
+      //单曲循环
+      if(playMode === 'oneRound'){
+        player().then(audio=>{
+          audio.currentTime = 0
           setTimer(0)
-          start()
-        },1000)
-      })
+          audio.play()
+        })
+      }
     }
   },[timer])
 
@@ -90,7 +91,7 @@ const Player:React.FC<PlayerProps> = ({url,total})=>{
             <div style={{fontSize:'12px',marginTop:'2px',fontWeight:600}}>词</div>
           </div>
         </div>
-        <Bar current={timer} total={261} onChange={(offset)=>{
+        <Bar current={timer>261 ? 261 : timer} total={261} onChange={(offset)=>{
             player().then(audio=>{
               setTimer(offset)
               audio.currentTime = offset
