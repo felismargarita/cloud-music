@@ -12,6 +12,11 @@ export default defineConfig({
       target: 'http://felis.top:8101/',
       pathRewrite: { '^/resourcebed': '' },
       changeOrigin: true
+    },
+    '/api': {
+      target: 'http://localhost:9001/',
+      pathRewrite: { '^/api': '' },
+      changeOrigin: true
     }
   },
   favicon:'/cloudmusic/favicon.ico',

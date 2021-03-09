@@ -88,7 +88,7 @@ const Bar:React.FC<BarProps> = ({current,total,onChange})=>{
         <div className="cloud-music-player-bar-over" style={{width:position.x}}></div>
         {dot}
       </div>
-    <div className="cloud-music-player-time">{moment(total*1000).format('mm:ss')}</div>
+    <div className="cloud-music-player-time">{typeof total === 'number' ? moment(total*1000).format('mm:ss') : '00:00'}</div>
   </div>
 
   )
