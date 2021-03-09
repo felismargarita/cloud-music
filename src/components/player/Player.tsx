@@ -15,19 +15,19 @@ const Player:React.FC<any> = ()=>{
   const totalSesonds = song?.duration || 0
 
   const mainBtn = (
-    <div className="cloud-music-player-main-btn">
+    <div className="cloud-music-player-main-btn" onClick={()=>{
+      if(paused){
+        play()
+      }else{
+        pause()
+      }
+    }}>
       {
         paused
         ?
-        <Icon
-          style={{marginRight:'-2px',marginTop:'-2px'}}
-          type="start"
-          onClick={play}/>
+        <Icon style={{marginRight:'-2px',marginTop:'-2px'}} type="start"/>
         :
-        <Icon 
-          type="pause" 
-          style={{marginRight:'1px',marginTop:'-2px'}}
-          onClick={pause}/>
+        <Icon type="pause" style={{marginRight:'1px',marginTop:'-2px'}}/>
       }
     </div>
   )

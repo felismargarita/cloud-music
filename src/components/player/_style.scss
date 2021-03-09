@@ -30,6 +30,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   &:hover {
     transition: all 0.3s;
     background: $grey-6;
