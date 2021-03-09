@@ -5,12 +5,13 @@ import Mode,{ModeType} from './mode/Mode'
 import SongInfo from './SongInfo/SongInfo'
 import urls from '@/api/urls'
 import useAudio from '@/hooks/useAudio'
-import useAudioDom from '@/hooks/useAudioDom'
+import useDom from '@/hooks/useDom'
 import useSong from '@/hooks/useSong'
+import Volume from './volume/Volume'
 const Player:React.FC<any> = ()=>{
   const [playMode,setPlayMode] = useState<ModeType>('turnList')
-  const {audioDom,audioRef} = useAudioDom()
-  const {currentTime,play,paused,pause,changeCurrentTime} = useAudio(audioDom,playMode)
+  const [audioDom,audioRef] = useDom<HTMLAudioElement>()
+  const {currentTime,play,paused,pause,changeCurrentTime,volume,changeVolume} = useAudio(audioDom,playMode)
   const {song,next,previous,random} = useSong()
   const totalSesonds = song?.duration || 0
 
@@ -64,6 +65,7 @@ const Player:React.FC<any> = ()=>{
           </div>
         </div>
         <Bar current={currentTime} total={totalSesonds} onChange={changeCurrentTime}/>
+        <Volume value={volume*100} onChange={v=>changeVolume(v/100)}/>
       </div>
     </div>
   )

@@ -3,12 +3,14 @@ import {ModeType} from '@/components/player/mode/Mode'
 import useSong from '@/hooks/useSong'
 export default (audio:HTMLAudioElement|null,playMode:ModeType)=>{
   const [currentTime,setCurrent] = useState(0)
+  const [volumeValue,setVolumeValue] = useState(0)
   const {next,random} = useSong()
   const isPaused = audio ? audio.paused : true
   //定时获取当前的时间
   useEffect(()=>{
     const inter = setInterval(()=>{
       setCurrent(audio?.currentTime || 0)
+      setVolumeValue(audio?.volume || 0)
     },200)
     return ()=>clearInterval(inter)
   },[audio])
@@ -71,6 +73,13 @@ export default (audio:HTMLAudioElement|null,playMode:ModeType)=>{
     audio.currentTime = currentTime
   },[audio])
 
+  const changeVolume = useCallback((value:number)=>{
+    if(!audio){
+      return
+    }
+    audio.volume = value
+  },[audio])
+
   useEffect(()=>{
     if(!audio){
       return
@@ -90,8 +99,10 @@ export default (audio:HTMLAudioElement|null,playMode:ModeType)=>{
   return {
           currentTime,
           paused:isPaused,
+          volume:volumeValue,
           pause,
           play,
-          changeCurrentTime
+          changeCurrentTime,
+          changeVolume
         }
 }
