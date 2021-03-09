@@ -4,6 +4,7 @@ import useSong from '@/hooks/useSong'
 export default (audio:HTMLAudioElement|null,playMode:ModeType)=>{
   const [currentTime,setCurrent] = useState(0)
   const {next,random} = useSong()
+  const isPaused = audio ? audio.paused : true
   //定时获取当前的时间
   useEffect(()=>{
     const inter = setInterval(()=>{
@@ -43,6 +44,26 @@ export default (audio:HTMLAudioElement|null,playMode:ModeType)=>{
     audio.play()
   },[audio])
 
+  //切换播放状态 暂停-播放
+  const toggle = useCallback(()=>{
+    if(isPaused){
+      play()
+    }else{
+      pause()
+    }
+  },[isPaused,play,pause])
+
+    //处理按空格键切换暂停和播放按钮
+    useEffect(()=>{
+      window.onkeypress = (k:KeyboardEvent)=>{
+          if(k.code === 'Space'){
+            toggle()
+          }
+      }
+      return ()=>window.addEventListener('keypress',()=>false)
+    },[toggle])
+  
+
   const changeCurrentTime = useCallback((currentTime:number) =>{
     if(!audio){
       return
@@ -68,7 +89,7 @@ export default (audio:HTMLAudioElement|null,playMode:ModeType)=>{
 
   return {
           currentTime,
-          paused:audio ? audio.paused : true,
+          paused:isPaused,
           pause,
           play,
           changeCurrentTime
