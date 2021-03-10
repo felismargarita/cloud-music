@@ -18,5 +18,11 @@
 }
 
 .cloud-music-player-volume-icon {
+    color: $grey-8;
+    transition: all 0.3s;
     cursor: pointer;
+    &:hover {
+        color: $grey-10;
+        transition: all 0.3s;
+    }
 }
