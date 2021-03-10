@@ -26,7 +26,7 @@ const SongInfo:React.FC<SongInfoProps> = ({song})=>{
         }
       </Card>
       <div className="cloud-music-player-song-text">
-        <div>{song.name}</div>
+        <div className="cloud-music-player-song-name">{song.name}</div>
         <div className="cloud-music-player-song-singer">{song.singer || '佚名'}</div>
       </div>
     </div>

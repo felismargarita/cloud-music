@@ -17,9 +17,23 @@
 
 .cloud-music-player-song-text {
   margin-left: 12px;
+  width: 146px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cloud-music-player-song-name {
+  height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .cloud-music-player-song-singer {
+  height: 16px;
   font-size: 12px;
   margin-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
