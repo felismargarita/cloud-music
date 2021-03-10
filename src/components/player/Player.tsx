@@ -8,6 +8,7 @@ import useAudio from '@/hooks/useAudio'
 import useDom from '@/hooks/useDom'
 import useSong from '@/hooks/useSong'
 import Volume from './volume/Volume'
+import PlayList from './playList/PlayList'
 const Player:React.FC<any> = ()=>{
   const [playMode,setPlayMode] = useState<ModeType>('turnList')
   const [audioDom,audioRef] = useDom<HTMLAudioElement>()
@@ -65,7 +66,10 @@ const Player:React.FC<any> = ()=>{
           </div>
         </div>
         <Bar current={currentTime} total={totalSesonds} onChange={changeCurrentTime}/>
-        <Volume value={volume*100} onChange={v=>changeVolume(v/100)}/>
+        <div className="cloud-music-player-items">
+          <Volume value={volume*100} onChange={v=>changeVolume(v/100)}/>
+          <PlayList/>
+        </div>
       </div>
     </div>
   )

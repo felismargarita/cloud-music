@@ -1,0 +1,115 @@
+cloud-music-player-list {
+  position: relative;
+  z-index: 1000;
+}
+.cloud-music-player-icon {
+  color: $grey-8;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+      color: $grey-10;
+      transition: all 0.3s;
+  }
+}
+
+.cloud-music-player-list-card {
+  box-shadow: -1px 0px 3px $grey-8;
+  z-index: 999;
+  background: #fff;
+}
+
+.cloud-music-player-list-header {
+  width: 420px;
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    height: 1px;
+    width: 90%;
+    background: $grey-5;
+  }
+}
+
+.cloud-music-player-list-switcher {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 21px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cloud-music-player-list-statistic {
+  color: $grey-5;
+  font-size: 12px;
+  position: absolute;
+  font-weight: 300;
+  bottom: 16px;
+  left: 20px;
+}
+
+.cloud-music-player-list-btn {
+  align-items: center;
+  width: 200px;
+  font-size: 13px;
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  color: $grey-9;
+}
+
+.cloud-music-player-list-icon {
+  margin-right: 4px;
+}
+
+.cloud-muisc-player-list-content {
+  overflow-y: auto;
+}
+
+.cloud-muisc-player-list-item {
+  height: 33px;
+  line-height: 33px;
+  font-size: 13px;
+  display: flex;
+  &:hover {
+    color: #000;
+  }
+  .cloud-muisc-player-list-item-status{
+    width: 20px;
+    // transform: scale(0.8,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cloud-muisc-player-list-item-song {
+    width: 204px; 
+    @include omit;
+    font-weight: 400;
+  }
+  .cloud-muisc-player-list-item-singer {
+    width: 94px; 
+    @include omit;
+    color: $grey-7;
+    font-weight: 400;
+   }
+   .cloud-muisc-player-list-item-icon {
+     width: 30px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: $grey-6;
+   }
+   .cloud-muisc-player-list-item-duration {
+     width: 76px;
+     color: $grey-5;
+     font-size: 12px;
+     font-weight: 400;
+   }
+}
+
+.cloud-muisc-player-list-item-selected {
+  background: #E5E5E5;
+}

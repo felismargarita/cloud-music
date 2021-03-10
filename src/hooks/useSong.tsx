@@ -42,5 +42,9 @@ export default ()=>{
     dispatch({type:'songList/changeIndex',index:getRandomIndex(index,list)})
   },[index,list])
 
-  return {song,previous,next,random}
+  const change = useCallback((indexDir:number)=>{
+    dispatch({type:'songList/changeIndex',index:indexDir})
+  },[])
+
+  return {song,previous,next,random,change}
 }

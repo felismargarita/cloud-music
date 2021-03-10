@@ -19,6 +19,12 @@ $grey-13: #000000 !default;
 $box-shadow: 1px 1px 5px black !default;
 $border-color: $grey-5;
 
+
+@mixin omit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .cloud-music {
   height: 100vh;
   width: 100vw;
@@ -61,6 +67,9 @@ div::-webkit-scrollbar-thumb {
 @import '../components/avatar/style';//头像
 @import '../components/player/style';//音乐播放
 @import '../components/darggableBar/style';//可拖拽的滑动条
+@import '../components/switchBotton/style';//switcher
+@import '../components/divider/style';//分割线
+@import '../components/list/style';//列表组件
 
 //页面组件
 @import '../pages/discovery/style';//发现页面

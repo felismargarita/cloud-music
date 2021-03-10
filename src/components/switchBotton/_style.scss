@@ -1,0 +1,45 @@
+$switch-button-color : #BBBBBB !default;
+
+.cloud-music-switcher-button {
+  border-radius: 18px;
+  display: flex;
+  height: 30px;
+  align-items: center;
+  &:after{
+    border: 1px solid $switch-button-color;
+    border-radius: 16px;
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+}
+
+.cloud-music-switcher-item {
+  height: 30px;
+  border-radius: 16px;
+  text-align: center;
+  line-height: 28px;
+  font-size: 12px;
+  box-sizing: border-box;
+  color: #000;
+  background: #fff;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background: $grey-4;
+    transition: all 0.3s;
+  }
+}
+
+.cloud-music-switcher-item-selected {
+  color: #fff;
+  background: $switch-button-color;
+  &:hover {
+    background: $switch-button-color;
+  }
+}

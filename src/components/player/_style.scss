@@ -2,6 +2,7 @@
 @import './mode/style';
 @import './SongInfo/style';
 @import './volume/style';
+@import './playList/style';
 .cloud-music-player-hidden-audio {
   position: fixed;
   visibility: hidden;
@@ -47,4 +48,19 @@
   &:hover {
     color: $primary-color;
   }
+}
+
+.cloud-music-player-items {
+  position: absolute;
+  right: 12px;
+  bottom: 0;
+  top: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 120px;
+  height: 32px;
 }
