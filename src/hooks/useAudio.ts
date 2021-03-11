@@ -94,7 +94,7 @@ export default (audio:HTMLAudioElement|null,playMode:ModeType)=>{
     }
 
 
-  },[playMode])
+  },[playMode,next,random])
 
   return {
           currentTime,

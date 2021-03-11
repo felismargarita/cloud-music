@@ -14,7 +14,6 @@ export default ()=>{
   const {list,id,historyList} = useSelector((state:{songList:SongListState})=>state.songList)
   const dispatch = useDispatch()
   const song = useMemo(()=>list.find(song=>song.id === id),[list,id]) as ISong|undefined
-  const currentIndex = useMemo(()=>list.findIndex(song=>song.id === id),[id,list])
   const [hisIndex,setHisIndex] = useState(0) //是否处在回退播放历史的过程中
 
   //上一首
@@ -35,6 +34,7 @@ export default ()=>{
       setHisIndex(nextIndex)
     }else{
       let nextIndex = 0
+      const currentIndex = list.findIndex(song=>song.id === id)
       if(currentIndex < list.length -1){
         nextIndex = currentIndex + 1
       }
@@ -50,6 +50,7 @@ export default ()=>{
       dispatch({type:'songList/changeIdNoHis',id:historyList[nextIndex]})
       setHisIndex(nextIndex)
     }else{
+      const currentIndex = list.findIndex(song=>song.id === id)
       const randomIndex = getRandomIndex(currentIndex,list)
       dispatch({type:'songList/changeId',id:list[randomIndex].id})
     }

@@ -10,7 +10,7 @@ import useSong from '@/hooks/useSong'
 import Volume from './volume/Volume'
 import PlayList from './playList/PlayList'
 const Player:React.FC<any> = ()=>{
-  const [playMode,setPlayMode] = useState<ModeType>('allRound')
+  const [playMode,setPlayMode] = useState<ModeType>('turnList')
   const [audioDom,audioRef] = useDom<HTMLAudioElement>()
   const {currentTime,play,paused,pause,changeCurrentTime,volume,changeVolume} = useAudio(audioDom,playMode)
   const {song,next,previous,random} = useSong()
