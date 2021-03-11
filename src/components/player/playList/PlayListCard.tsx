@@ -20,9 +20,9 @@ interface PlayListCardProps {
 
 const PlayListCard:React.FC<PlayListCardProps> = ({onClose})=>{
   const [style,setStyle] = useState<React.CSSProperties>({})
-  const {list,index:currentIndex} = useSelector((state:{songList:SongListState})=>state.songList)
+  const {list,id:currentId} = useSelector((state:{songList:SongListState})=>state.songList)
   const {change} = useSong()
-  const [hoverIndex,setHoverIndex] = useState<number>()
+  const [hoverId,setHoverId] = useState<number>()
   const height = 538
   const width = 420
   const headerHeight = 104
@@ -47,16 +47,16 @@ const PlayListCard:React.FC<PlayListCardProps> = ({onClose})=>{
     onClose?.()
   },playListRef)
 
-  const hoverStyle =(index:number) => {
-    const st = index === hoverIndex ? {color:'#000'}:{}
-    if(index === currentIndex){
+  const hoverStyle =(id:number) => {
+    const st = id === hoverId ? {color:'#000'}:{}
+    if(id === currentId){
       st.color = '#EC4141'
     }
     return st
   }
-  const getClasses = (index:number)=>{
+  const getClasses = (id:number)=>{
     return classnames('cloud-muisc-player-list-item',{
-      'cloud-muisc-player-list-item-selected':index === currentIndex
+      'cloud-muisc-player-list-item-selected':id === currentId
     })
   }
   return (<div className="cloud-music-player-list-card" style={style} ref={playListRef}>
@@ -80,21 +80,21 @@ const PlayListCard:React.FC<PlayListCardProps> = ({onClose})=>{
       {
         list.map((song,index)=><List.Item key={song.id}>
           <div 
-            onDoubleClick={()=>change(index)}
-            className={getClasses(index)}
-            onMouseEnter={()=>setHoverIndex(index)} 
-            onMouseLeave={()=>setHoverIndex(undefined)}>
+            onDoubleClick={()=>change(song.id)}
+            className={getClasses(song.id)}
+            onMouseEnter={()=>setHoverId(song.id)} 
+            onMouseLeave={()=>setHoverId(undefined)}>
             {
-              index === currentIndex
+              song.id === currentId
               ?
               <Icon className="cloud-muisc-player-list-item-status" type="start" size={6}/>
               :
               <div className="cloud-muisc-player-list-item-status"></div>
             }
-            <div className="cloud-muisc-player-list-item-song" style={hoverStyle(index)}>{song.name}</div>
-            <div className="cloud-muisc-player-list-item-singer" style={hoverStyle(index)}>{song.singer}</div>
-            <Icon className="cloud-muisc-player-list-item-icon" style={hoverStyle(index)} type="source" size={14}/>
-            <div className="cloud-muisc-player-list-item-duration" style={hoverStyle(index)}>{moment(song.duration*1000).format('mm:ss')}</div>
+            <div className="cloud-muisc-player-list-item-song" style={hoverStyle(song.id)}>{song.name}</div>
+            <div className="cloud-muisc-player-list-item-singer" style={hoverStyle(song.id)}>{song.singer}</div>
+            <Icon className="cloud-muisc-player-list-item-icon" style={hoverStyle(song.id)} type="source" size={14}/>
+            <div className="cloud-muisc-player-list-item-duration" style={hoverStyle(song.id)}>{moment(song.duration*1000).format('mm:ss')}</div>
           </div>
         </List.Item>)
       }

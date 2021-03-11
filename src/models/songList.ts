@@ -3,7 +3,7 @@ import {Action,Effect,Reducer,Subscription} from 'umi'
 import {ISong} from '@/types/SongType'
 import {getMyList} from '@/services/apiList'
 export interface SongListState {
-  index:number
+  id:number
   list:ISong[]
 }
 
@@ -14,27 +14,28 @@ export interface SongListInterface {
   },
   reducers:{
     update:Reducer<SongListState>,
-    changeIndex:Reducer<SongListState>,
+    changeId:Reducer<SongListState>,
   },
   subscriptions: { setup: Subscription }
 }
 
 
 const SongListModal:SongListInterface= {
-  state:{index:0,list:[]},
+  state:{id:0,list:[]},
   reducers: {
-    update(state, {list}){
-      return {index:state?.index||0,list}
+    update(state, {list,id}){
+      return {list,id}
     },
-    changeIndex(state,{index}){
+    changeId(state,{id}){
       const list = state?.list || []
-      return {list,index}
+      return {list,id}
     }
   },
   effects:{
     *getList(action:Action,{put,call}){
       const list = yield call(getMyList)
-      yield put({type:'update',list})
+      const id = list[0].id
+      yield put({type:'update',list,id})
     }
   },
   subscriptions:{
