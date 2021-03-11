@@ -27,7 +27,7 @@ const Bar:React.FC<BarProps> = ({current,total,onChange})=>{
 
   //处理移动红点
   useEffect(()=>{
-    if(!isDragging){
+    if(!isDragging && total){
       setPosition({x:current*width/total,y:position.y})
     }
   },[current,isDragging])
