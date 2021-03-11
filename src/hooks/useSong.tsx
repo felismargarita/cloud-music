@@ -1,4 +1,4 @@
-import {useMemo,useCallback} from 'react'
+import {useMemo,useCallback, useState} from 'react'
 import {useSelector,useDispatch} from 'umi'
 import {SongListState} from '@/models/SongList'
 import {ISong} from '@/types/SongType'
@@ -11,38 +11,49 @@ const getRandomIndex =(index:number,list:any[]) =>{
 }
 
 export default ()=>{
-  const {list,id} = useSelector((state:{songList:SongListState})=>state.songList)
+  const {list,id,historyList} = useSelector((state:{songList:SongListState})=>state.songList)
   const dispatch = useDispatch()
   const song = useMemo(()=>list.find(song=>song.id === id),[list,id]) as ISong|undefined
   const currentIndex = useMemo(()=>list.findIndex(song=>song.id === id),[id,list])
+  const [hisIndex,setHisIndex] = useState(0) //是否处在回退播放历史的过程中
+
   //上一首
   const previous = useCallback(()=>{
-    let previousIndex = 0
-    if(currentIndex>0){
-      previousIndex = currentIndex - 1
+    console.log(historyList,hisIndex)
+    if(historyList.length && hisIndex<historyList.length -1){
+      const lastIndex = hisIndex+1
+      setHisIndex(lastIndex)
+      dispatch({type:'songList/changeIdNoHis',id:historyList[lastIndex]})
     }
-    if(currentIndex === 0){
-      previousIndex = list.length - 1
-    } 
-    console.log(list[previousIndex].id)
-    dispatch({type:'songList/changeId',id:list[previousIndex].id})
-  },[id,list])
+  },[id,list,hisIndex,historyList])
 
   //下一首
   const next = useCallback(()=>{
-    let nextIndex = 0
-    if(currentIndex < list.length -1){
-      nextIndex = currentIndex + 1
+    if(hisIndex>0){
+      const nextIndex = hisIndex - 1
+      dispatch({type:'songList/changeIdNoHis',id:historyList[nextIndex]})
+      setHisIndex(nextIndex)
+    }else{
+      let nextIndex = 0
+      if(currentIndex < list.length -1){
+        nextIndex = currentIndex + 1
+      }
+      dispatch({type:'songList/changeId',id:list[nextIndex].id})
     }
-    dispatch({type:'songList/changeId',id:list[nextIndex].id})
-  },[id,list])
+  },[id,list,hisIndex,historyList])
 
   
   //除本首歌之外的随机一首
   const random = useCallback(()=>{
-    const randomIndex = getRandomIndex(currentIndex,list)
-    dispatch({type:'songList/changeId',id:list[randomIndex].id})
-  },[id,list])
+    if(hisIndex>0){
+      const nextIndex = hisIndex - 1
+      dispatch({type:'songList/changeIdNoHis',id:historyList[nextIndex]})
+      setHisIndex(nextIndex)
+    }else{
+      const randomIndex = getRandomIndex(currentIndex,list)
+      dispatch({type:'songList/changeId',id:list[randomIndex].id})
+    }
+  },[id,list,hisIndex,historyList])
 
   const change = useCallback((changeId:number)=>{
     dispatch({type:'songList/changeId',id:changeId})

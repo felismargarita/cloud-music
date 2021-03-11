@@ -9,6 +9,8 @@ import moment from 'moment'
 import classnames from 'classnames'
 import useSong from '@/hooks/useSong'
 import {useClickAway} from 'ahooks'
+import {ISong} from '@/types/SongType'
+
 //组件说明:
 //这个组件的布局有点反常,他是游离在组件之外,而是去参考某一个父组件的,
 //这个父组件的className是 cloud-music-footer,需要获取到dom
@@ -20,9 +22,15 @@ interface PlayListCardProps {
 
 const PlayListCard:React.FC<PlayListCardProps> = ({onClose})=>{
   const [style,setStyle] = useState<React.CSSProperties>({})
-  const {list,id:currentId} = useSelector((state:{songList:SongListState})=>state.songList)
+  const {list,id:currentId,historyList} = useSelector((state:{songList:SongListState})=>state.songList)
   const {change} = useSong()
   const [hoverId,setHoverId] = useState<number>()
+  const [listType,setListType] = useState(0) //播放列表/历史记录
+  const historys = historyList.map(hisId=>{
+    const song = list.find(song=>song.id === hisId) 
+    return song as ISong
+  })
+  const playList = listType === 0 ? list :historys
   const height = 538
   const width = 420
   const headerHeight = 104
@@ -61,7 +69,7 @@ const PlayListCard:React.FC<PlayListCardProps> = ({onClose})=>{
   }
   return (<div className="cloud-music-player-list-card" style={style} ref={playListRef}>
     <div className="cloud-music-player-list-header" style={{height:headerHeight}}>
-      <SwitchBotton className="cloud-music-player-list-switcher">
+      <SwitchBotton className="cloud-music-player-list-switcher" onChange={type=>setListType(type)}>
         <SwitchBotton.Item index={0}>播放列表</SwitchBotton.Item>
         <SwitchBotton.Item index={1}>历史记录</SwitchBotton.Item>
       </SwitchBotton>
@@ -78,7 +86,7 @@ const PlayListCard:React.FC<PlayListCardProps> = ({onClose})=>{
     </div>
     <List className="cloud-muisc-player-list-content" style={{height:height-headerHeight}}>
       {
-        list.map((song,index)=><List.Item key={song.id}>
+        playList.map((song,index)=><List.Item key={song.id}>
           <div 
             onDoubleClick={()=>change(song.id)}
             className={getClasses(song.id)}
