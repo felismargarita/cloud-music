@@ -1,20 +1,28 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {ISong} from '@/types/SongType' 
 import Card from '@/components/card/Card'
 import urls from '@/api/urls'
+import Board from './board/Board'
+import Icon from '@/components/icons/Icon'
 interface SongInfoProps {
   song?:ISong
 }
 
 const SongInfo:React.FC<SongInfoProps> = ({song})=>{
-
+  const [visible,setVisible] = useState(false)
   if(!song){
     return null
   }
 
+  const center = (
+    <div className="cloud-music-player-song-icon">
+    </div>
+  )
+
   return (
     <div className="cloud-music-player-song-container">
-      <Card className="cloud-music-player-song-info">
+      <Board visible={visible}/>
+      <Card center={center} className="cloud-music-player-song-info" onClick={()=>setVisible(!visible)}>
         {
           song.pictureUrl 
           ?
@@ -26,7 +34,7 @@ const SongInfo:React.FC<SongInfoProps> = ({song})=>{
         }
       </Card>
       <div className="cloud-music-player-song-text">
-        <div className="cloud-music-player-song-name">{song.name}</div>
+        <div className="cloud-music-player-song-name" onClick={()=>setVisible(!visible)}>{song.name}</div>
         <div className="cloud-music-player-song-singer">{song.singer || '佚名'}</div>
       </div>
     </div>

@@ -13,6 +13,7 @@ interface CardProps {
   className?:string
   onHoverChange?:(isHover:boolean)=>void
   isZoomin?:boolean
+  onClick?:()=>void
 }
 
 type PlacementType = 'top'|'bottom'|'left'|'right'|'lt'|'lb'|'rt'|'rb'|'center'
@@ -47,13 +48,14 @@ const elementProcessor = (ele?:React.ReactElement,placement?:PlacementType)=>{
   })
 }
 
-const Card:React.FC<CardProps> = ({lt,lb,rt,rb,top,bottom,right,left,center,children,className,onHoverChange,isZoomin})=>{
+const Card:React.FC<CardProps> = ({lt,lb,rt,rb,top,bottom,right,left,center,children,className,onHoverChange,isZoomin,onClick})=>{
 
   const zoomClasses = classnames({
     'cloud-music-card-zoom':isZoomin
   })
   return (
   <div 
+  onClick={()=>onClick?.()}
   className={classnames('cloud-music-card',className)} 
   onMouseLeave={()=>onHoverChange?.(false)}
   onMouseEnter={()=>onHoverChange?.(true)}>

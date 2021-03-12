@@ -1,11 +1,20 @@
 import {useState,useEffect,useCallback} from 'react'
 import {ModeType} from '@/components/player/mode/Mode'
 import useSong from '@/hooks/useSong'
-export default (audio:HTMLAudioElement|null,playMode:ModeType)=>{
+export default ()=>{
   const [currentTime,setCurrent] = useState(0)
   const [volumeValue,setVolumeValue] = useState(0)
   const {next,random} = useSong()
+  const [playMode,setPlayMode] = useState<ModeType>('turnList')
+  const [audio,setAudio] = useState<HTMLAudioElement>()
   const isPaused = audio ? audio.paused : true
+
+  //根据id获取audio对象
+  useEffect(()=>{
+    const ref = document.getElementById('cloud-music-player-audio') as HTMLAudioElement
+    setAudio(ref)
+  },[])
+
   //定时获取当前的时间
   useEffect(()=>{
     const inter = setInterval(()=>{
@@ -103,6 +112,8 @@ export default (audio:HTMLAudioElement|null,playMode:ModeType)=>{
           pause,
           play,
           changeCurrentTime,
-          changeVolume
+          changeVolume,
+          setPlayMode,
+          playMode
         }
 }

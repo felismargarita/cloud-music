@@ -1,0 +1,33 @@
+@import '../board/gramo/style';//留声机的样式 #D9D9D9
+@import '../board/lyric/style';//歌词的样式
+.cloud-music-player-board {
+  position: fixed;
+  width: 1021px;
+  background: linear-gradient(#D9D9D9,#fff);
+  transition: transform 0.3s;
+  z-index: 999;
+}
+.cloud-music-player-board-title{
+  text-align: center;
+  margin-top: 84px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cloud-music-player-board-name {
+  font-size: 36px;
+}
+
+.cloud-music-player-board-singer {
+  font-size: 16px;
+  width: 200px;
+  @include omit;
+  color: $grey-6;
+}
+
+.cloud-music-player-border-detail {
+  display: flex;
+  justify-content: space-around;
+}

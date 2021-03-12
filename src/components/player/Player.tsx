@@ -5,14 +5,21 @@ import Mode,{ModeType} from './mode/Mode'
 import SongInfo from './SongInfo/SongInfo'
 import urls from '@/api/urls'
 import useAudio from '@/hooks/useAudio'
-import useDom from '@/hooks/useDom'
 import useSong from '@/hooks/useSong'
 import Volume from './volume/Volume'
 import PlayList from './playList/PlayList'
 const Player:React.FC<any> = ()=>{
-  const [playMode,setPlayMode] = useState<ModeType>('turnList')
-  const [audioDom,audioRef] = useDom<HTMLAudioElement>()
-  const {currentTime,play,paused,pause,changeCurrentTime,volume,changeVolume} = useAudio(audioDom,playMode)
+  const {
+          currentTime,
+          play,
+          paused,
+          pause,
+          changeCurrentTime,
+          volume,
+          changeVolume,
+          playMode,
+          setPlayMode
+        } = useAudio()
   const {song,next,previous,random} = useSong()
   const totalSesonds = song?.duration || 0
 
@@ -36,14 +43,8 @@ const Player:React.FC<any> = ()=>{
 
 
   return (
-    <div style={{width:'100%',height:'100%'}}>
-      {
-        song 
-        ?
-        <audio className="cloud-music-player-hidden-audio" ref={audioRef} src={urls.SERVER+song.songUrl}/>
-        :
-        null
-      }
+    <div style={{width:'100%',height:'100%',zIndex:900}}>
+      <audio id="cloud-music-player-audio" className="cloud-music-player-hidden-audio" src={song? urls.SERVER+song.songUrl : ''}/>
       <div className="cloud-music-container">
         <SongInfo song={song}/>
         <div className="cloud-music-player-btn-group">
