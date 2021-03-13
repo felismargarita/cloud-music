@@ -18,7 +18,6 @@ export default ()=>{
 
   //上一首
   const previous = useCallback(()=>{
-    console.log(historyList,hisIndex)
     if(historyList.length && hisIndex<historyList.length -1){
       const lastIndex = hisIndex+1
       setHisIndex(lastIndex)

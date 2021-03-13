@@ -1,3 +1,15 @@
+.cloud-music-player-lyric-container {
+  height: 300px;
+  width: 400px;
+  overflow-y: auto;
+  line-height: 2.5;
+}
 .cloud-music-player-lyric {
-  
+    font-size: 14px;
+    transition: all 0.3s;
+}
+.cloud-music-player-lyric-current {
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s;
 }
