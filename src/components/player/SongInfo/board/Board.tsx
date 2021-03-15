@@ -35,6 +35,7 @@ const Board:React.FC<BoardProps> = ({visible,className,style,...rest})=>{
       </div>
       <div className="cloud-music-player-border-detail">
         <GramoPhone/>
+        <div style={{width:'100px'}}></div>
         <Lyric/>
       </div>
     </div>

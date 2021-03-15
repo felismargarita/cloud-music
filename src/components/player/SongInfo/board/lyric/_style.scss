@@ -1,15 +1,21 @@
 .cloud-music-player-lyric-container {
   height: 300px;
-  width: 400px;
+  width: 268px;
   overflow-y: auto;
   line-height: 2.5;
+  margin-top: 50px;
+  text-align: center;
 }
-.cloud-music-player-lyric {
+.cloud-music-player-lyric  {
     font-size: 14px;
     transition: all 0.3s;
+    span::selection{
+      background: #D6D6D6;
+      color: #000;
+    }
 }
 .cloud-music-player-lyric-current {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     transition: all 0.3s;
 }

@@ -4,19 +4,24 @@ import useAudio from '@/hooks/useAudio'
 import classnames from 'classnames'
 import moment from 'momnet'
 
+const getSeconds = (timestamp:string)=>{
+    const time = moment(timestamp,'mm:ss')
+    const mins = time.minutes()
+    const seconds = time.seconds()
+    return mins*60+seconds
+}
 
 const Lyric = ()=>{
   const {song} = useSong()
   const {currentTime} = useAudio()
-  const sentences = song?.lyric?.split(/\r/).map(sentence=>{
-    const [,timestamp,content] = sentence.split(/\[|\]/)
-    return {timestamp,content}
-  })
   const  ref = useRef<HTMLDivElement>(null)
   const timer = useRef<any>()
   const [scrolling,setScrolling] = useState(false)
   const [index,setIndex] = useState(0) //当前的歌词的索引
-
+  const sentences = song?.lyric?.split(/\r/).map(sentence=>{
+    const [,timestamp,content] = sentence.split(/\[|\]/)
+    return {timestamp,content}
+  })
   //处理滚动防抖,停止滚都后2s钟视为滚动结束
   useEffect(()=>{
     ref.current?.addEventListener('scroll',()=>{
@@ -28,7 +33,6 @@ const Lyric = ()=>{
     })
   },[])
 
-  //歌曲切换后歌词自动回到第一行
   useEffect(()=>{
     setIndex(0)
   },[song])
@@ -38,12 +42,18 @@ const Lyric = ()=>{
     if(!sentences){
       return
     }
-    const {timestamp} = sentences[index+1]
-    const time = moment(timestamp,'mm:ss')
-    const mins = time.minutes()
-    const seconds = time.seconds()
-    if(currentTime>=(mins*60+seconds)){
-      setIndex(index + 1)
+    for(let i=0;i<sentences.length;i++){
+      if( i <sentences.length -1 ){
+        const thisSentence = sentences[i]
+        const nextSentence = sentences[i+1]
+        if(currentTime>=getSeconds(thisSentence.timestamp) && currentTime<=getSeconds(nextSentence.timestamp)){
+          setIndex(i)
+          break
+        }
+      }else{
+        setIndex(i)
+          break
+      }
     }
   },[currentTime,sentences])
 
@@ -63,11 +73,16 @@ const Lyric = ()=>{
   return (
     <div className="cloud-music-player-lyric-container" ref={ref}>
       {
-        sentences?.map((sentence,idx)=>{
+        sentences
+        ?
+        sentences.map((sentence,idx)=>{
           return <div key={idx} className={getClasse(idx)}>
             <span>{sentence.content}</span>
           </div>
         })
+        :
+        <div>暂无歌词</div>
+
       }
     </div>
   )
