@@ -14,7 +14,8 @@ export default defineConfig({
       changeOrigin: true
     },
     '/api': {
-      target: 'http://felis.top:9001/',
+      // target: 'http://felis.top:9001/',
+      target: 'http://localhost:9001/',
       pathRewrite: { '^/api': '' },
       changeOrigin: true
     }

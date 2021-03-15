@@ -3,6 +3,7 @@ import classnames from 'classnames'
 import useSong from '@/hooks/useSong'
 import GramoPhone from './gramo/GramoPhone'
 import Lyric from './lyric/Lyric'
+import Comments from './comments/Comments'
 interface BoardProps {
   visible?:boolean
   className?:string
@@ -19,6 +20,7 @@ const Board:React.FC<BoardProps> = ({visible,className,style,...rest})=>{
   const visibleTop = position.bottom - height - position.height
   const innerStyle:React.CSSProperties = ({
     position:'fixed',
+    overflowY:'auto',
     width,
     height,
     top:visibleTop,
@@ -37,6 +39,12 @@ const Board:React.FC<BoardProps> = ({visible,className,style,...rest})=>{
         <GramoPhone/>
         <div style={{width:'100px'}}></div>
         <Lyric/>
+      </div>
+      <div className="cloud-music-like-comments">
+        <Comments orderAttr="like"/>
+      </div>
+      <div className="cloud-music-new-comments">
+        <Comments orderAttr="createdTime"/>
       </div>
     </div>
   )

@@ -6,9 +6,10 @@ interface PaginationProps {
   current:number
   pageSize:number
   onChange?:(current:number,size:number)=>void
+  style?:React.CSSProperties
 }
 
-const Pagination:React.FC<PaginationProps> = ({total,current,pageSize,onChange})=>{  
+const Pagination:React.FC<PaginationProps> = ({total,current,pageSize,onChange,style})=>{  
   let paginations:Array<number> = []
 
   const totalPage = Math.ceil(total/pageSize)
@@ -52,7 +53,7 @@ const Pagination:React.FC<PaginationProps> = ({total,current,pageSize,onChange})
   )
    
   return (
-    <div className="cloud-music-pagination">
+    <div className="cloud-music-pagination" style={style}>
       <Item 
       className={current === 1 ? 'cloud-music-pagination-item-disabled':''} 
       onClick={()=>{
