@@ -1,14 +1,15 @@
 import React from 'react'
-
-interface AvatarProps {
+import classnames from 'classnames'
+export interface AvatarProps {
   size?:number,
   src:string
+  className?:string
 }
 
-const Avatar:React.FC<AvatarProps> = ({src,size})=>{
-
+const Avatar:React.FC<AvatarProps> = ({src,size,className})=>{
+  const classes = classnames('cloud-music-avatar',className)
   return (
-    <div className="cloud-music-avatar" style={{height:size,width:size}}>
+    <div className={classes} style={{height:size,width:size}}>
       <img style={{width:'100%',height:'100%'}} src={src}/>
     </div>
   )

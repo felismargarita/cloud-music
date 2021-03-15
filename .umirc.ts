@@ -30,6 +30,10 @@ export default defineConfig({
       {
         path:'/',
         component:'@/pages/discovery/Discovery'
+      },
+      {
+        path:'/test',
+        component:'@/pages/Test'
       }
     ]
   }],

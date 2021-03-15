@@ -1,0 +1,49 @@
+.cloud-music-comment {
+  display: flex;
+  width: 555px;
+  justify-content: space-between;
+  .cloud-music-comment-avatar {
+    width: 53px; 
+  }
+  .cloud-music-comment-detail{
+    width: 504px;
+    .cloud-music-comment-footer{
+      position: relative;
+      font-size: 12px;
+      margin-top: 8px;
+      height: 16px;
+      color: $grey-6;
+      .cloud-music-comment-time {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
+      .cloud-music-comment-btn{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        .cloud-music-comment-btn-item{
+          font-size: 12px;
+          color: $grey-9;
+          user-select: none;
+          cursor: pointer;
+          &:hover {
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+  .cloud-music-comment-content {
+    font-size: 12px;
+    .cloud-music-comment-nickname {
+      color: #40a9ff;
+      margin-right: 4px;
+    }
+  }
+  .cloud-music-comment-refer {
+    background: rgb(245, 245, 245);
+    padding: 4px;
+    border-radius: 6px;
+  }
+}

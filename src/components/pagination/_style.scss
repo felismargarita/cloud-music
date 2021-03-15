@@ -1,0 +1,43 @@
+.cloud-music-pagination {
+  display: flex;
+  .cloud-music-pagination-item{
+    display: flex;
+    font-size: 13px;
+    color: $grey-9;
+    margin: 2px;
+    justify-content: center;
+    align-items: center;
+    min-width: 24px;
+    min-height: 24px;
+    padding: 0 4px;
+    border-radius: 4px;
+    border: 1px solid $grey-6;
+    user-select: none;
+    cursor: pointer;
+    &:hover {
+     background: rgb(245, 245, 245); 
+    }
+  }
+  .cloud-music-pagination-item-selected {
+    cursor: default;
+    background: $primary-color;
+    color: #fff;
+    &:hover {
+      background: $primary-color;
+    }
+  }
+  .cloud-music-pagination-item-omit {
+    cursor:default;
+    &:hover {
+      background: inherit;
+    }
+  }
+  .cloud-music-pagination-item-disabled {
+    cursor: not-allowed;
+    color: $grey-6;
+    &:hover {
+      background: inherit;
+    }
+  }
+}
+
