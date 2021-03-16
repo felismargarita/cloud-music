@@ -67,7 +67,7 @@ const Comment:React.FC<CommentProps> = ({avatar,content,nickname,postTime,referC
               <div>
                 <span className="cloud-music-comment-btn-item">
                   <Icon type="like" size={13}/>
-                  {like}
+                  <span style={{marginLeft:'4px'}}>{like ? like : ''}</span>
                 </span>
                 <Divider voidValue={13}/>
                 <span className="cloud-music-comment-btn-item">

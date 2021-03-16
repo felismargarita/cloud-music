@@ -4,7 +4,7 @@
 .cloud-music-player-board {
   position: fixed;
   width: 1021px;
-  background: linear-gradient(#D9D9D9,#fff);
+  background: linear-gradient(to bottom,#D9D9D9,#fff);//
   transition: transform 0.3s;
   z-index: 999;
 }

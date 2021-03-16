@@ -28,6 +28,7 @@
 @mixin tooltipHidden {
     transition:opacity 0.5s;
     opacity: 0;
+    pointer-events: none;
 }
 
 .cloud-music-play-mode-oneRound-display {

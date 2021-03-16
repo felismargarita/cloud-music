@@ -2,5 +2,10 @@
   width: 560px;
   .cloud-music-comments-title {
     font-weight: 600;
+    margin: 12px 0;
+  }
+  .cloud-music-player-more-btn {
+    display: flex;
+    justify-content: center;
   }
 }

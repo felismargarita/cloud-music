@@ -41,10 +41,10 @@ const Board:React.FC<BoardProps> = ({visible,className,style,...rest})=>{
         <Lyric/>
       </div>
       <div className="cloud-music-like-comments">
-        <Comments orderAttr="like"/>
+        <Comments orderAttr="like" songId={song?.id}/>
       </div>
       <div className="cloud-music-new-comments">
-        <Comments orderAttr="createdTime"/>
+        <Comments orderAttr="createdTime" songId={song?.id}/>
       </div>
     </div>
   )

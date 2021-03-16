@@ -7,7 +7,8 @@ export interface ICommentType {
   createdUsername:string
   createdNickname:string
   createdTime:string
-  like:number
+  userLike:number
+  avatar:string
   referId?:number
   referComment?:ICommentType
 }

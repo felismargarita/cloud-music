@@ -12,3 +12,18 @@
   color: $primary-color;
   font-size: 18px;
 }
+
+.cloud-music-button {
+  text-align: center;
+  box-sizing: content-box;
+  height: 28px;
+  width: 128px;
+  line-height: 28px;
+  border: 1px solid $grey-6;
+  color: $grey-10;
+  font-size: 13px;
+  cursor: pointer;
+}
+.cloud-music-button-round {
+  border-radius: 15px;
+}

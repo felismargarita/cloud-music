@@ -37,7 +37,12 @@ const Pagination:React.FC<PaginationProps> = ({total,current,pageSize,onChange,s
       if(pageNumber){
         return (
           <Item 
-            onClick={()=>onChange?.(pageNumber,pageSize)}
+            onClick={()=>{
+              if(pageNumber === current){
+                return
+              }
+              onChange?.(pageNumber,pageSize)
+            }}
             className={pageNumber === current ? 'cloud-music-pagination-item-selected' :''} 
             key={index}>{pageNumber}</Item>
         )
