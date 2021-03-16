@@ -17,16 +17,13 @@ const Board:React.FC<BoardProps> = ({visible,className,style,...rest})=>{
   const position = footerDom.getBoundingClientRect()
   const height = 598
   const width = 1021
-  const visibleTop = position.bottom - height - position.height
   const innerStyle:React.CSSProperties = ({
     position:'fixed',
     overflowY:'auto',
     width,
-    height,
-    top:visibleTop,
+    height:visible ? height : 0,
     left:position.right - width,
-    transform:visible ? 'scale(1,1)' : 'scale(1,0)',
-    transformOrigin:'0 100%'
+    bottom: window.innerHeight - position.top
   }) 
   const {song} = useSong()
   return (
