@@ -9,12 +9,15 @@
   align-items: center;
   pointer-events: none;
   z-index: 1000;
+  word-wrap: break-word;
+  word-break: break-all;
   .cloud-music-toast {
     text-align: center;
     padding: 24px 40px;
     border-radius: 12px;
     min-width: 120px;
-    height: 84px;
+    max-width: 400px;
+    min-height: 84px;
     line-height: 36px;
     background: rgb(60, 60, 60);
     color: #fff;

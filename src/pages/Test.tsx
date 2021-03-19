@@ -9,7 +9,7 @@ const Test = ()=>{
   return (
     <div>
       <Button onClick={()=>{
-        toast.warn({content:new Date().getTime()})
+        toast.warn({content:'123333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333'})
       }}>测试toast warn</Button>
             <Button onClick={()=>{
         toast.info({content:new Date().getTime()})
