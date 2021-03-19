@@ -1,0 +1,24 @@
+.cloud-music-dialog {
+.rc-dialog-close {
+  height: 16px;
+  width: 16px;
+  right: 12px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color:$grey-12;
+  outline: none;
+  &:hover {
+    font-weight: 300;
+  }
+}
+.rc-dialog-header {
+  border-bottom: none;
+}
+}
+
+.cloud-music-dialog-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
