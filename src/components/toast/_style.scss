@@ -1,0 +1,38 @@
+.cloud-music-toast-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  .cloud-music-toast {
+    text-align: center;
+    padding: 24px 40px;
+    border-radius: 12px;
+    min-width: 120px;
+    height: 84px;
+    line-height: 36px;
+    background: rgb(60, 60, 60);
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    opacity: 0;
+  }
+  .cloud-music-toast-display {
+    opacity: 0.9;
+  }
+  .cloud-music-toast-icon {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: #fff;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+  }
+}
+
