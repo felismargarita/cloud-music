@@ -9,8 +9,17 @@ const Test = ()=>{
   return (
     <div>
       <Button onClick={()=>{
+        toast.warn({content:new Date().getTime()})
+      }}>测试toast warn</Button>
+            <Button onClick={()=>{
+        toast.info({content:new Date().getTime()})
+      }}>测试toast info</Button>
+            <Button onClick={()=>{
+        toast.success({content:new Date().getTime()})
+      }}>测试toast success</Button>
+            <Button onClick={()=>{
         toast.error({content:new Date().getTime()})
-      }}>测试toast</Button>
+      }}>测试toast error</Button>
     </div>
   )
 }

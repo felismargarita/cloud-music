@@ -123,6 +123,17 @@ const Close = ()=>(
 <svg fill="currentColor" viewBox="0 0 1024 1024" version="1.1" p-id="2199" width="1em" height="1em"><path d="M877.216 491.808M575.328 510.496 946.784 140.672c17.568-17.504 17.664-45.824 0.192-63.424-17.504-17.632-45.792-17.664-63.36-0.192L512.032 446.944 143.712 77.216C126.304 59.712 97.92 59.648 80.384 77.12 62.848 94.624 62.816 123.008 80.288 140.576l368.224 369.632L77.216 879.808c-17.568 17.504-17.664 45.824-0.192 63.424 8.736 8.8 20.256 13.216 31.776 13.216 11.424 0 22.848-4.352 31.584-13.056l371.36-369.696 371.68 373.088C892.192 955.616 903.68 960 915.168 960c11.456 0 22.912-4.384 31.648-13.088 17.504-17.504 17.568-45.824 0.096-63.392L575.328 510.496 575.328 510.496zM575.328 510.496" p-id="2200"></path></svg>
 )
 
+const Warn = ()=>(
+<svg fill="currentColor" viewBox="0 0 1024 1024" version="1.1" p-id="2765" width="1em" height="1em"><path d="M512 969.61313087a91.52262617 91.52262617 0 1 1 0-183.04525235 91.52262617 91.52262617 0 0 1 0 183.04525235z m-64.06583831-852.07564966C447.93416169 82.57655303 476.58145871 54.38686913 512 54.38686913a63.60822522 63.60822522 0 0 1 64.06583831 63.15061208v505.20310889c0 34.78038549-28.73846211 63.15418716-64.06583831 63.15418718-35.42032886 0-64.06583831-28.37380166-64.06583831-63.15239961V117.53748121z" p-id="2766"></path></svg>
+)
+
+const Info = ()=>(
+<svg fill="currentColor" viewBox="0 0 1024 1024" version="1.1" p-id="6429" width="1em" height="1em"><path d="M512 953.86837909a55.23354739 55.23354739 0 0 1-55.23354739-55.23354739V401.53290524a55.23354739 55.23354739 0 0 1 110.46709478 0v497.10192646a55.23354739 55.23354739 0 0 1-55.23354739 55.23533493z m0-883.73675818a82.85121486 82.85121486 0 1 1 0 165.70064216 82.85121486 82.85121486 0 0 1 0-165.70064216z" p-id="6430"></path></svg>
+)
+
+const Success = ()=>(
+<svg fill="currentColor" viewBox="0 0 1024 1024" version="1.1" p-id="5224" width="1em" height="1em"><path d="M381.648013 814.724a37.481949 37.481949 0 0 1-52.979911 0L78.924013 564.969208a37.460543 37.460543 0 1 1 52.969208-52.979911L381.648013 761.733386a37.492652 37.492652 0 0 1 0 52.990614z" fill="#3E3A39" p-id="5225"></path><path d="M328.668102 814.724a37.460543 37.460543 0 0 1 0-52.979911l552.478793-552.478792a37.460543 37.460543 0 0 1 52.969208 52.979911L381.648013 814.724a37.481949 37.481949 0 0 1-52.979911 0z" p-id="5226"></path></svg>
+)
 const icons = {
   music:MusicSvg,
   download:DownloadSvg,
@@ -156,10 +167,14 @@ const icons = {
   omit:Omit,
   loading:Loading,
   pencil:Pencil,
-  close:Close
+  close:Close,
+  warn:Warn,
+  info:Info,
+  success:Success,
+  error:Close,
 }
 
-export type IconType = 'music'|'download'|'cloud'|'fm'|'mark'|'stave'|'love'|'previous'|'next'|'play'|'pause'|'oneRound'|'random'|'allRound'|'turnList'|'start'|'volumeNormal'|'volumeSilent'|'playList'|'collection'|'delete'|'source'|'arrowUp'|'like'|'share'|'comment'|'arrowLeft'|'arrowRight'|'omit'|'loading'|'arrowTop'|'pencil'|'close'
+export type IconType = 'music'|'download'|'cloud'|'fm'|'mark'|'stave'|'love'|'previous'|'next'|'play'|'pause'|'oneRound'|'random'|'allRound'|'turnList'|'start'|'volumeNormal'|'volumeSilent'|'playList'|'collection'|'delete'|'source'|'arrowUp'|'like'|'share'|'comment'|'arrowLeft'|'arrowRight'|'omit'|'loading'|'arrowTop'|'pencil'|'close'|'warn'|'info'|'success'|'error'
 
 interface IconProps {
   type:IconType
