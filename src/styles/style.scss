@@ -18,6 +18,7 @@ $grey-13: #000000 !default;
 
 $box-shadow: 1px 1px 5px black !default;
 $border-color: $grey-5;
+$border:1px solid $border-color;
 
 
 @mixin omit {
@@ -41,10 +42,10 @@ $border-color: $grey-5;
 }
 
 //滚动条样式
-div::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 6px;
 }
-div::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background: $grey-5;
   border-radius: 2px;
 }
@@ -73,6 +74,9 @@ div::-webkit-scrollbar-thumb {
 @import '../components/comment/style';//评论组件
 @import '../components/pagination/style';//分页器
 @import '../components/loading/style';//loading
+@import '../components/backTop/style'; //backtop
+@import '../components/inputArea/style';//input area
+@import '../components/dialog/style';//dialog
 
 //页面组件
 @import '../pages/discovery/style';//发现页面

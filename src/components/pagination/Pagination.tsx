@@ -1,15 +1,17 @@
 import React from 'react'
 import Icon from '@/components/icons/Icon'
 import Item from './Item'
+import classnames from 'classnames'
 interface PaginationProps {
   total:number
   current:number
   pageSize:number
+  className?:string
   onChange?:(current:number,size:number)=>void
   style?:React.CSSProperties
 }
 
-const Pagination:React.FC<PaginationProps> = ({total,current,pageSize,onChange,style})=>{  
+const Pagination:React.FC<PaginationProps> = ({total,current,pageSize,onChange,className,style})=>{  
   let paginations:Array<number> = []
 
   const totalPage = Math.ceil(total/pageSize)
@@ -30,6 +32,8 @@ const Pagination:React.FC<PaginationProps> = ({total,current,pageSize,onChange,s
       paginations = [1,0,current-3,current-2,current-1,current,current+1,current+2,current+3,0,totalPage]
     }
   }
+
+  
 
   const render = (
     <>
@@ -56,9 +60,9 @@ const Pagination:React.FC<PaginationProps> = ({total,current,pageSize,onChange,s
     })}
     </>
   )
-   
+  const classes = classnames('cloud-music-pagination',className)
   return (
-    <div className="cloud-music-pagination" style={style}>
+    <div className={classes} style={style}>
       <Item 
       className={current === 1 ? 'cloud-music-pagination-item-disabled':''} 
       onClick={()=>{

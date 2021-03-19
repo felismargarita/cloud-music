@@ -11,12 +11,13 @@ import Loading from '@/components/loading/Loading'
 import Button from '@/components/button/Button'
 import urls from '@/api/urls'
 interface CommentsProps {
-  orderAttr:'like'|'createdTime'
+  orderAttr:'userLike'|'createdTime'
   className?:string
   songId?:number
+  onComment?:(commentId:number)=>void
 }
 
-const Comments:React.FC<CommentsProps> = ({orderAttr,className,songId})=>{
+const Comments:React.FC<CommentsProps> = ({orderAttr,className,songId,onComment})=>{
   const [pagination,setPagination] = useState({current:1,size:10})
   const commentsApi = useApi<IPaginationRes<ICommentType>>(
     {url:'/comment/paging', method:'post'},{immediate:false},
@@ -28,7 +29,7 @@ const Comments:React.FC<CommentsProps> = ({orderAttr,className,songId})=>{
           ...pagination,
           orders:[
             {
-              column:'userLike',
+              column:orderAttr,
               asc:false
             }
           ],
@@ -61,6 +62,7 @@ const Comments:React.FC<CommentsProps> = ({orderAttr,className,songId})=>{
                 postTime={moment(createdTime)}
                 nickname={createdNickname}
                 like={userLike}
+                onClickComment={()=>onComment?.(id)}
                 referComment={
                   referComment 
                   ?
@@ -87,13 +89,14 @@ const Comments:React.FC<CommentsProps> = ({orderAttr,className,songId})=>{
   )
 
   const footer = (
-    orderAttr === 'like'
+    orderAttr === 'userLike'
     ?
     <div className="cloud-music-player-more-btn">
       <Button type="round">更多精彩评论</Button>
     </div>
     :
     <Pagination
+    className="cloud-music-player-comments-pagination"
     total={commentsApi.data?.total || 0}
     current={pagination.current}
     pageSize={pagination.size}

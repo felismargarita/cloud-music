@@ -1,41 +1,68 @@
 @import '../board/gramo/style';//留声机的样式 #D9D9D9
 @import '../board/lyric/style';//歌词的样式
 @import '../board/comments/style';//歌曲评论样式
+@import '../board/bottom/style';//底部条样式
 .cloud-music-player-board {
   position: fixed;
   background: linear-gradient(to bottom,#D9D9D9,#fff);//
   transition: height 0.3s;
   z-index: 999;
 }
-.cloud-music-player-board-title{
-  text-align: center;
-  margin-top: 84px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.cloud-music-player-board-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  .cloud-music-player-board-title{
+    text-align: center;
+    margin-top: 84px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .cloud-music-player-board-name {
+    font-size: 36px;
+  }
+  
+  .cloud-music-player-board-singer {
+    font-size: 16px;
+    width: 200px;
+    @include omit;
+    color: $grey-6;
+  }
+  
+  .cloud-music-player-border-detail {
+    display: flex;
+    justify-content: center;
+    height: 460px;
+  }
+  .cloud-music-like-comments {
+    display: flex;
+    justify-content: center;
+  }
+  .cloud-music-new-comments {
+    display: flex;
+    justify-content: center;
+  }
 }
-
-.cloud-music-player-board-name {
-  font-size: 36px;
-}
-
-.cloud-music-player-board-singer {
-  font-size: 16px;
-  width: 200px;
-  @include omit;
-  color: $grey-6;
-}
-
-.cloud-music-player-border-detail {
-  display: flex;
-  justify-content: center;
-}
-.cloud-music-like-comments {
-  display: flex;
-  justify-content: center;
-}
-.cloud-music-new-comments {
-  display: flex;
-  justify-content: center;
+.cloud-music-player-board-bottom {
+  width: 100%;
+  height: 36px;
+  position: absolute;
+  bottom: 16px;
+  right: 0;
+  .cloud-music-player-board-backtop {
+    position: absolute;
+    right: 180px;
+  }
+  .cloud-music-player-board-write-btn {
+    position: absolute;
+    right: 144px;
+  }
+  .cloud-music-player-board-delivery-btn {
+    position: absolute;
+    right: 442px;
+  }
 }

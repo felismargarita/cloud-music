@@ -12,9 +12,11 @@ interface CommentProps {
   referComment?:CommentProps
   like?:number
   footer?:React.ReactNode[]
+  onClickComment?:()=>void
+  onClickLike?:()=>void
 }
 
-const Comment:React.FC<CommentProps> = ({avatar,content,nickname,postTime,referComment,footer,like})=>{
+const Comment:React.FC<CommentProps> = ({avatar,content,nickname,postTime,referComment,footer,like,onClickComment,onClickLike})=>{
 
   return (
     <div className="cloud-music-comment">
@@ -66,7 +68,7 @@ const Comment:React.FC<CommentProps> = ({avatar,content,nickname,postTime,referC
               :
               <div>
                 <span className="cloud-music-comment-btn-item">
-                  <Icon type="like" size={13}/>
+                  <Icon type="like" size={13} onClick={onClickLike}/>
                   <span style={{marginLeft:'4px'}}>{like ? like : ''}</span>
                 </span>
                 <Divider voidValue={13}/>
@@ -75,7 +77,7 @@ const Comment:React.FC<CommentProps> = ({avatar,content,nickname,postTime,referC
                 </span>
                 <Divider voidValue={13}/>
                 <span className="cloud-music-comment-btn-item">
-                  <Icon type="comment" size={13}/>
+                  <Icon type="comment" size={13} onClick={onClickComment}/>
                 </span>
               </div>
             }
