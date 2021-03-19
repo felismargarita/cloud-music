@@ -6,94 +6,94 @@ interface ToastProps {
   content:React.ReactNode
   duaration?:number
   uniqueKey?:string
+  destorySelf?:(levelAction:()=>void)=>void
 }
-
-
-const transitionTime = 200 //动画时间
-const divList:{
-  key:string,
-  div:HTMLDivElement
-  timer:any
-}[] = []
-
-const Toast:React.FC<ToastProps> = ({content,duaration,uniqueKey})=>{
+const transitionTime = 200 //动画时间 单位(毫秒)
+const Toast:React.FC<ToastProps> = ({content,destorySelf})=>{
   const [className,setClassName] = useState('cloud-music-toast')
-  const lastUmountTimerRef = useRef<any>()
   useEffect(()=>{
     setClassName(classnames('cloud-music-toast','cloud-music-toast-display'))
-    //保留timer
-    if(uniqueKey){
-      const div = divList.find(d=>d.key === uniqueKey)
-      lastUmountTimerRef.current = div?.timer
-    }
-    setTimeout(() => {
-      if(uniqueKey){
-      //重定位timer
-        const currentDiv = divList.find(d=>d.key === uniqueKey)
-        console.log(currentDiv,lastUmountTimerRef)
-        if(currentDiv?.timer !== lastUmountTimerRef.current){
-          lastUmountTimerRef.current === currentDiv?.timer
-          return
-        }
-      }
-      setClassName('cloud-music-toast')
-    }, duaration);
+    destorySelf?.(()=>setClassName('cloud-music-toast'))
   },
   [])
 
   return (
     <div className="cloud-music-toast-container">
-      <div id={uniqueKey} className={className} style={{transition:`opacity ${transitionTime/1000}s`}}>{content}</div>
+      <div className={className} style={{transition:`opacity ${transitionTime/1000}s`}}>{content}</div>
     </div>
   )
 }
 
+const nodeList:{
+  key:string,
+  div:HTMLDivElement
+  timer:any
+  destoryCb:()=>void
+}[] = []
+
 const toast = (props:ToastProps)=>{
-  const {content,duaration=2000,uniqueKey} = props
+  const {content,duaration=1500,uniqueKey} = props
   const div = document.createElement('div')
-  const umountNode = ()=>{
-    let uDiv = div
-    if(uniqueKey){
-      const node = divList.find(d=>d.key === uniqueKey)
-      if(node){
-        uDiv = node.div
-      }
+
+  const destory = (cb:()=>void)=>{
+    const leave = ()=>{
+      const timer = setTimeout(()=>{
+        cb()
+        setTimeout(()=>{
+          ReactDOM.unmountComponentAtNode(div)
+          if(uniqueKey){
+            const index = nodeList.findIndex(d=>d.key === uniqueKey)
+            index > -1 && nodeList.splice(index,1)
+          }
+        },transitionTime)
+      },duaration)
+      return {timer,div}
     }
-    const t = setTimeout(()=>{
-      ReactDOM.unmountComponentAtNode(uDiv)
-      if(uniqueKey){
-        const index = divList.findIndex(d=>d.key === uniqueKey)
-        divList.splice(index,1)//删除掉这个节点
-      }
-    },duaration+transitionTime)//动画结束时将节点移除
-    return t
+    if(uniqueKey){
+      nodeList.push({key:uniqueKey,destoryCb:cb,...leave()})
+    }else{
+      leave()
+    }
   }
   const renderNode = ()=>{
     document.body.appendChild(div)
-    ReactDOM.render(<Toast content={content} duaration={duaration} uniqueKey={uniqueKey}/>,div)
+    ReactDOM.render(<Toast content={content} destorySelf={destory}/>,div)
   }
 
   if(uniqueKey){
-    const node = divList.find(d=>d.key === uniqueKey)
-    //如果这个key的div存在则立即替换掉这个timer,如果不存在则推入列表
-    if(node){
-      clearTimeout(node.timer)
-      node.timer = umountNode()
+    const index = nodeList.findIndex(d=>d.key === uniqueKey)
+    if(index>-1){
+      const node  = nodeList[index]
+      const {timer,destoryCb,div} = node
+      clearTimeout(timer) //清理定时器
+      node.timer = setTimeout(()=>{
+        destoryCb()
+        setTimeout(()=>{
+          ReactDOM.unmountComponentAtNode(div)
+          const index = nodeList.findIndex(d=>d.key === uniqueKey)
+          index > -1 && nodeList.splice(index,1)
+        },transitionTime)
+      },duaration)
     }else{
-      divList.push({key:uniqueKey,div,timer:umountNode()})
       renderNode()
     }
   }else{
     renderNode()
-    umountNode()
   }
+
 }
 
 export default {
   error:(props:ToastProps)=>{
     const {content,...rest} = props
     toast({
-      content:<div className=""><ToastIcon type="error"/>{content}</div>,
+      content:(
+        <div className=""><ToastIcon type="error"/>
+          <div className="cloud-music-toast-content">
+            {content}
+          </div>
+        </div>
+      ),
       ...rest
     })
   },

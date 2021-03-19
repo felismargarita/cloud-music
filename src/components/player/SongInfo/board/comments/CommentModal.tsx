@@ -6,6 +6,7 @@ import InputArea from '@/components/inputArea/InputArea'
 import Button from '@/components/button/Button'
 import classnames from 'classnames'
 import useApi from '@/hooks/useApi'
+import toast from '@/components/toast/Toast'
 interface CommentModalProps {
   visible:boolean
   onCancel:()=>void
@@ -59,6 +60,11 @@ const CommentModal:React.FC<CommentModalProps> = ({visible,onCancel,onOk})=>{
         className={btnClasses} 
         onClick={()=>{
           if(disableBtn){
+            return
+          }
+          if(restCount<0){
+            console.log(123)
+            toast.error({content:'字数超过限制'})
             return
           }
           addCommentApi.fetch({

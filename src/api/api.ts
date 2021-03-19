@@ -1,7 +1,6 @@
 import axios from 'axios'
 import urls from './urls'
-import {message} from 'antd'
-import {history} from 'umi'
+import toast from '@/components/toast/Toast'
 const service = axios.create({
   baseURL: urls.SERVER, // api的base_url,
 })
@@ -21,12 +20,12 @@ service.interceptors.response.use(
     if (res.code === 200) {
       return res.info
     }else {
-      message.error(res.msg)
+      toast.error(res.msg)
       return Promise.reject(res)
     }
   },
   error => {
-    message.error(error.msg||'系统超时,请稍后再试')
+    toast.error(error.msg||'系统超时,请稍后再试')
     return Promise.reject(error)
   }
 );

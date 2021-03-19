@@ -9,7 +9,7 @@ const Test = ()=>{
   return (
     <div>
       <Button onClick={()=>{
-        toast.toast({content:new Date().getTime(),duaration:1500})
+        toast.error({content:new Date().getTime()})
       }}>测试toast</Button>
     </div>
   )
