@@ -93,6 +93,7 @@ const CommentModal:React.FC<CommentModalProps> = ({visible,onCancel,onOk,current
               referId:currentComment?.id
             }
           }).then(()=>{
+            toast.success({content:'评论成功!'})
             setComment('')
             onOk()
           })
