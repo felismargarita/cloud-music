@@ -18,7 +18,7 @@ import urls from '@/api/urls'
 import Button from '@/components/button/Button'
 import Pagination from '@/components/pagination/Pagination'
 import Loading from '@/components/loading/Loading'
-
+import BoardHeader from './boardHeader/BoardHeader'
 interface BoardProps {
   visible?:boolean
   className?:string
@@ -153,6 +153,13 @@ const Board:React.FC<BoardProps> = ({visible,className,style,...rest})=>{
 
   return (
     <div className={classes} style={{...style,...innerStyle}} {...rest}>
+      {
+        visible
+        ?
+        <BoardHeader visible={scrollVisible}/>
+        :
+        null
+      }
       <div className="cloud-music-player-board-wrapper" style={{paddingBottom : visible ? 68 : 0}}>
         <div className="cloud-music-player-board-title">
           <div className="cloud-music-player-board-name">{song?.name}</div>

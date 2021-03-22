@@ -1,9 +1,10 @@
 @import '../board/gramo/style';//留声机的样式 #D9D9D9
 @import '../board/lyric/style';//歌词的样式
 @import '../board/bottom/style';//底部条样式
+@import '../board/boardHeader/style';//头部样式
 .cloud-music-player-board {
   position: fixed;
-  background: linear-gradient(to bottom,#D9D9D9,#fff);//
+  background: #fff;//
   transition: height 0.3s;
   z-index: 999;
 }

@@ -3,6 +3,8 @@ import useSong from '@/hooks/useSong'
 import useAudio from '@/hooks/useAudio'
 import classnames from 'classnames'
 import moment from 'momnet'
+import song,{SongState} from '@/models/song'
+import {useDispatch} from 'umi'
 
 const getSeconds = (timestamp:string)=>{
     const time = moment(timestamp,'mm:ss')
@@ -22,6 +24,7 @@ const Lyric = ()=>{
     const [,timestamp,content] = sentence.split(/\[|\]/)
     return {timestamp,content}
   })
+  const dispatch = useDispatch()
   //处理滚动防抖,停止滚都后2s钟视为滚动结束
   useEffect(()=>{
     ref.current?.addEventListener('scroll',()=>{
@@ -69,6 +72,11 @@ const Lyric = ()=>{
     if(ele && !scrolling){
       ele.scrollIntoView({behavior:'smooth',block:'center'}) //平滑滚动至视口中央
     }
+    //同步当前歌词
+    dispatch({
+      type:'song/updateCurrentLyric',
+      currentLyric:sentences ? sentences[index].content :''
+    })
   },[index])
   return (
     <div className="cloud-music-player-lyric-container" ref={ref}>
