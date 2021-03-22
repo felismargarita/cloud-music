@@ -45,7 +45,7 @@ const Board:React.FC<BoardProps> = ({visible,className,style,...rest})=>{
   },target,100)
   return (
     <div className={classes} style={{...style,...innerStyle}} {...rest}>
-      <div className="cloud-music-player-board-wrapper">
+      <div className="cloud-music-player-board-wrapper" style={{paddingBottom : visible ? 68 : 0}}>
         <div className="cloud-music-player-board-title">
           <div className="cloud-music-player-board-name">{song?.name}</div>
           <div className="cloud-music-player-board-singer">{song?.singer}-{song?.album}</div>
