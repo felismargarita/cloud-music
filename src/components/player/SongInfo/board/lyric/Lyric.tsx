@@ -13,7 +13,11 @@ const getSeconds = (timestamp:string)=>{
     return mins*60+seconds
 }
 
-const Lyric = ()=>{
+interface LyricProps {
+  scrollVisible:boolean
+}
+
+const Lyric:React.FC<LyricProps> = ({scrollVisible})=>{
   const {song} = useSong()
   const {currentTime} = useAudio()
   const  ref = useRef<HTMLDivElement>(null)
@@ -69,7 +73,7 @@ const Lyric = ()=>{
   //自动滚动歌词,这里要注意判断用户是否在手动滚动歌词 scrolling,如果在滚动,则自动滚动要跳过
   useEffect(()=>{
     const ele = document.getElementsByClassName('cloud-music-player-lyric-current')[0]
-    if(ele && !scrolling){
+    if(ele && !scrolling && !scrollVisible){
       ele.scrollIntoView({behavior:'smooth',block:'center'}) //平滑滚动至视口中央
     }
     //同步当前歌词

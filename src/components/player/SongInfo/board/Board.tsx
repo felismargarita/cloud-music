@@ -168,7 +168,7 @@ const Board:React.FC<BoardProps> = ({visible,className,style,...rest})=>{
         <div className="cloud-music-player-border-detail">
           <GramoPhone/>
           <div style={{width:'100px'}}></div>
-          <Lyric/>
+          <Lyric scrollVisible={scrollVisible}/>
         </div>
         <div className="cloud-music-like-comments">
           <div className="cloud-music-comments">
