@@ -14,8 +14,10 @@ const SongInfo:React.FC<SongInfoProps> = ({song})=>{
     return null
   }
 
+
   const center = (
     <div className="cloud-music-player-song-icon">
+      <Icon type="arrowUp"/>
     </div>
   )
 

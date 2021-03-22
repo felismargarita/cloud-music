@@ -154,7 +154,7 @@ const Board:React.FC<BoardProps> = ({visible,className,style,...rest})=>{
   return (
     <div className={classes} style={{...style,...innerStyle}} {...rest}>
       {
-        visible
+        visible && scrollVisible
         ?
         <BoardHeader visible={scrollVisible}/>
         :
