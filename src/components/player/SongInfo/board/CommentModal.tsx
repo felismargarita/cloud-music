@@ -7,13 +7,16 @@ import Button from '@/components/button/Button'
 import classnames from 'classnames'
 import useApi from '@/hooks/useApi'
 import toast from '@/components/toast/Toast'
+import {ICommentType} from '@/types/CommentType'
+
 interface CommentModalProps {
   visible:boolean
   onCancel:()=>void
   onOk:()=>void
+  currentComment?:ICommentType
 }
 
-const CommentModal:React.FC<CommentModalProps> = ({visible,onCancel,onOk})=>{
+const CommentModal:React.FC<CommentModalProps> = ({visible,onCancel,onOk,currentComment})=>{
   const {song} = useSong()
   const [dragableDiabled,setDragbleDiabled] = useState(true)
   const [comment,setComment] = useState('')
@@ -30,7 +33,13 @@ const CommentModal:React.FC<CommentModalProps> = ({visible,onCancel,onOk})=>{
       setDragbleDiabled(true)
     }}
      >
-      {'歌曲: '+song?.name}
+      {
+        currentComment
+        ?
+        '评论'
+        :
+        '歌曲: '+song?.name
+      }
     </div>
   )
 
@@ -40,6 +49,16 @@ const CommentModal:React.FC<CommentModalProps> = ({visible,onCancel,onOk})=>{
   const btnClasses = classnames('cloud-music-comment-btn',{
     'cloud-music-comment-btn-disabled':disableBtn
   })
+
+
+
+  const placeholder = (
+    currentComment
+    ?
+    `回复 ${currentComment.createdNickname}:`
+    :
+    '发表评论'
+  )
   return (
     <Dialog
       className="cloud-music-comment-dialog"
@@ -51,7 +70,7 @@ const CommentModal:React.FC<CommentModalProps> = ({visible,onCancel,onOk})=>{
       modalRender={modal => <Draggable disabled={dragableDiabled}>{modal}</Draggable>}
       visible={visible} 
       title={title}>
-      <InputArea placeholder="发表评论" value={comment} onChange={e=>setComment(e.currentTarget.value)}/>
+      <InputArea placeholder={placeholder} value={comment} onChange={e=>setComment(e.currentTarget.value)}/>
       <div className="cloud-music-right-bar">
         <div className="cloud-music-comment-count">{restCount}</div>
         <Button 
@@ -70,11 +89,12 @@ const CommentModal:React.FC<CommentModalProps> = ({visible,onCancel,onOk})=>{
           addCommentApi.fetch({
             data:{
               content:comment,
-              songId:song?.id
+              songId:song?.id,
+              referId:currentComment?.id
             }
           }).then(()=>{
             setComment('')
-            onCancel()
+            onOk()
           })
         }}>评论</Button>
       </div>
