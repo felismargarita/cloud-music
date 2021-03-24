@@ -55,6 +55,13 @@ $border:1px solid $border-color;
   scrollbar-width: thin; /* 滚动条宽度有三种：thin、auto、none */
 }
 
+.github-icon {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  font-size: 24px;
+}
+
 //基础组件
 @import '../components/layout/style';//页面布局
 @import '../components/carousel/style';//走马灯-整体样式
