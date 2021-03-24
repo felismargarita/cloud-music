@@ -78,6 +78,8 @@ $border:1px solid $border-color;
 @import '../components/inputArea/style';//input area
 @import '../components/dialog/style';//dialog
 @import '../components/toast/style'; //toast组件
+@import '../components/infiniteScroll/style';//无限滚动
 
 //页面组件
 @import '../pages/discovery/style';//发现页面
+@import '../pages/comment/style';//精彩评论页面

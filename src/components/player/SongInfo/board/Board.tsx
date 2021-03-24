@@ -7,7 +7,7 @@ import useScroll from '@/hooks/useScroll'
 import BackTop from '@/components/backTop/BackTop'
 import WriteCommentBtn from './bottom/WriteCommentBtn'
 import DeliveryCommentBtn from './bottom/DeliveryCommentBtn'
-import CommentModal from './CommentModal'
+import CommentModal from '../../../dialog/CommentModal'
 import Comment from '@/components/comment/Comment'
 import Divider from '@/components/divider/Divider'
 import moment from 'moment'
@@ -19,13 +19,16 @@ import Button from '@/components/button/Button'
 import Pagination from '@/components/pagination/Pagination'
 import Loading from '@/components/loading/Loading'
 import BoardHeader from './boardHeader/BoardHeader'
+import toast from '@/components/toast/Toast'
+import {history} from 'umi'
 interface BoardProps {
   visible?:boolean
+  onClose?:()=>void
   className?:string
   style?:React.CSSProperties
 }
 
-const Board:React.FC<BoardProps> = ({visible,className,style,...rest})=>{
+const Board:React.FC<BoardProps> = ({visible,className,onClose,style,...rest})=>{
   const classes = classnames('cloud-music-player-board',className)
   const footerDomList = document.getElementsByClassName('cloud-music-footer')
   const footerDom = footerDomList[0]
@@ -150,6 +153,15 @@ const Board:React.FC<BoardProps> = ({visible,className,style,...rest})=>{
     </div>
   }
 
+  const handleClickUserLikeBtn = ()=>{
+    if(likeCommentsApi.data?.records.length){
+      history.push(`/comment/userlike?songId=${song?.id}`)
+      onClose?.()
+    }else{
+      toast.warn({content:'暂无精彩评论'})
+    }
+  }
+
 
   return (
     <div className={classes} style={{...style,...innerStyle}} {...rest}>
@@ -178,7 +190,7 @@ const Board:React.FC<BoardProps> = ({visible,className,style,...rest})=>{
             </div>
             <div className="cloud-music-comments-footer">
               <div className="cloud-music-player-more-btn">
-                <Button type="round">更多精彩评论</Button>
+                <Button type="round" onClick={handleClickUserLikeBtn}>更多精彩评论</Button>
               </div>
             </div>
           </div>

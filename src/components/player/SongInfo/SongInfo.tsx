@@ -23,7 +23,7 @@ const SongInfo:React.FC<SongInfoProps> = ({song})=>{
 
   return (
     <div className="cloud-music-player-song-container">
-      <Board visible={visible}/>
+      <Board visible={visible} onClose={()=>setVisible(false)}/>
       <Card center={center} className="cloud-music-player-song-info" onClick={()=>setVisible(!visible)}>
         {
           song.pictureUrl 

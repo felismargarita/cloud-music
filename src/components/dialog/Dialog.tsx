@@ -16,7 +16,7 @@ const Dialog:React.FC<DialogProps> = ({visible,children,onCancel,title,className
   const classes = classnames('cloud-music-dialog',className)
   return (
     <RCDialog 
-    zIndex={999}
+    zIndex={1000}
     visible={visible} 
     onClose={onCancel}
     className={classes}

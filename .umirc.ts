@@ -33,6 +33,10 @@ export default defineConfig({
         component:'@/pages/discovery/Discovery'
       },
       {
+        path:'/comment/userlike',
+        component:'@/pages/comment/UserLikeComment'
+      },
+      {
         path:'/test',
         component:'@/pages/Test'
       }
