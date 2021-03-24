@@ -3,16 +3,17 @@ import {RightOutlined} from '@ant-design/icons'
 interface HeaderProps {
   content:string
   onClick?:()=>void
+  pure?:boolean
 }
 
-const Header:React.FC<HeaderProps> = ({content,onClick})=>{
+const Header:React.FC<HeaderProps> = ({content,onClick,pure})=>{
 
   return (
     <div 
     className="cloud-music-page-header"
     onClick={()=>onClick?.()} 
     >
-      {content}<RightOutlined className="cloud-music-page-header-icon"/>
+      {content}{pure ? null : <RightOutlined className="cloud-music-page-header-icon"/>}
     </div>
   )
 }
