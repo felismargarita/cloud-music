@@ -1,12 +1,13 @@
 .cloud-music-comment {
   display: flex;
-  width: 555px;
-  justify-content: space-between;
+  width: 100%;
   .cloud-music-comment-avatar {
+    flex-shrink: 0;
     width: 53px; 
+    margin-right: 12px;
   }
   .cloud-music-comment-detail{
-    width: 504px;
+    flex-grow: 1;
     .cloud-music-comment-footer{
       position: relative;
       font-size: 12px;
