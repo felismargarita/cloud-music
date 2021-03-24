@@ -4,6 +4,7 @@ import Avatar from '@/components/avatar/Avatar'
 import {Moment} from 'moment'
 import Divider from '@/components/divider/Divider'
 import Icon from '@/components/icons/Icon'
+import formatMoment from './formatMoment'
 interface CommentProps {
   content:string
   nickname:string
@@ -51,7 +52,7 @@ const Comment:React.FC<CommentProps> = ({avatar,content,nickname,postTime,referC
         <div className="cloud-music-comment-footer">
           <div className="cloud-music-comment-time">
             {
-            postTime ? postTime.format('YYYY年MM月DD日 hh:mm') : null
+            postTime ? formatMoment(postTime) : null
             }
           </div>
           <div className="cloud-music-comment-btn">
