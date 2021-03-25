@@ -57,6 +57,13 @@ const Board:React.FC<BoardProps> = ({visible,className,onClose,style,...rest})=>
     setSrcollVisible(v)
   },target,100)
 
+  //页面打开时将歌曲详情页面滑动到顶端
+  useEffect(()=>{
+    if(visible){
+      target().scrollTop = 0
+    }
+  },[visible])
+
   //精彩评论API
   const likeCommentsApi = useApi<IPaginationRes<ICommentType>>({url:'/comment/paging', method:'post'},{immediate:false})
   const fetch = ()=>{
@@ -166,9 +173,9 @@ const Board:React.FC<BoardProps> = ({visible,className,onClose,style,...rest})=>
   return (
     <div className={classes} style={{...style,...innerStyle}} {...rest}>
       {
-        visible && scrollVisible
+        visible
         ?
-        <BoardHeader visible={scrollVisible}/>
+        <BoardHeader visible={visible && scrollVisible}/>
         :
         null
       }

@@ -20,7 +20,7 @@ const BoardHeader:React.FC<BoardHeaderProps> =({visible}) => {
     'cloud-music-board-header-lyric-hidden':!visible
   })
   return (
-    <div className={classes}>
+    <div className={classes} style={{background:visible ? '#fff' : ''}}>
       <div className={nameClasses}>{song?.name}</div>
       <div className={lyricClasses}>{songModel.currentLyric}</div>
     </div>
