@@ -127,9 +127,8 @@ const Board:React.FC<BoardProps> = ({visible,className,onClose,style,...rest})=>
                 const {content,createdTime,createdNickname,userLike,id,referComment,avatar} = comment
                 const isLast =  9 === index
                 return (
-                  <>
+                  <div key={id}>
                     <Comment 
-                      key={id}
                       avatar={{src:urls.SERVER+avatar,size:36}}
                       content={content}
                       postTime={moment(createdTime)}
@@ -157,7 +156,7 @@ const Board:React.FC<BoardProps> = ({visible,className,onClose,style,...rest})=>
                       :
                       <Divider direction="horizontal"/>
                     }
-                  </>
+                  </div>
                 )
               }) 
       }
@@ -203,6 +202,7 @@ const Board:React.FC<BoardProps> = ({visible,className,onClose,style,...rest})=>
             {renderCommentsBody(likeCommentsApi)}
             </div>
             <div className="cloud-music-comments-footer">
+              <Divider direction="horizontal"/>
               <div className="cloud-music-player-more-btn">
                 <Button type="round" onClick={handleClickUserLikeBtn}>更多精彩评论</Button>
               </div>
