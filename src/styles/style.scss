@@ -16,7 +16,7 @@ $grey-12: #141414 !default;
 $grey-13: #000000 !default;
 
 
-$box-shadow: 1px 1px 5px black !default;
+$box-shadow: 1px 1px 5px $grey-8  !default;
 $border-color: $grey-5;
 $border:1px solid $border-color;
 
