@@ -19,7 +19,6 @@ $normal-height:3px !default;
       top: -6px;
       width: 100%;
       height: 6px;
-      background: $grey-4;
     }//扩大点选面积,提升用户体验
     &:after {
       content: '';
@@ -28,7 +27,6 @@ $normal-height:3px !default;
       bottom: -6px;
       width: 100%;
       height: 6px;
-      background: $grey-4;
     }//扩大点选面积,提升用户体验
   }
   .cloud-music-draggable-bar-over {
