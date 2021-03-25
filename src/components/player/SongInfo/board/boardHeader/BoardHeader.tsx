@@ -5,9 +5,10 @@ import {useSelector} from 'umi'
 import classnames from 'classnames'
 interface BoardHeaderProps {
   visible?:boolean
+  style?:React.CSSProperties
 }
 
-const BoardHeader:React.FC<BoardHeaderProps> =({visible}) => {
+const BoardHeader:React.FC<BoardHeaderProps> =({visible,style}) => {
   const {song} = useSong()
   const songModel = useSelector((state:{song:SongState})=>state.song)
   const classes = classnames('cloud-music-board-header',{
@@ -20,7 +21,7 @@ const BoardHeader:React.FC<BoardHeaderProps> =({visible}) => {
     'cloud-music-board-header-lyric-hidden':!visible
   })
   return (
-    <div className={classes} style={{background:visible ? '#fff' : ''}}>
+    <div className={classes} style={style}>
       <div className={nameClasses}>{song?.name}</div>
       <div className={lyricClasses}>{songModel.currentLyric}</div>
     </div>

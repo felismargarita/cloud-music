@@ -21,6 +21,8 @@ import Loading from '@/components/loading/Loading'
 import BoardHeader from './boardHeader/BoardHeader'
 import toast from '@/components/toast/Toast'
 import {history} from 'umi'
+import useColorThief from '@/hooks/useColorThief'
+
 interface BoardProps {
   visible?:boolean
   onClose?:()=>void
@@ -36,6 +38,8 @@ const Board:React.FC<BoardProps> = ({visible,className,onClose,style,...rest})=>
   const [scrollVisible,setSrcollVisible] = useState(false)
   const [dialogVisible,setDialogVisible] = useState(false)
   const [currentComment,setComment] = useState<ICommentType>()
+  const {song} = useSong()
+
   const height = 598
   const width = 1021
   const innerStyle:React.CSSProperties = ({
@@ -45,7 +49,6 @@ const Board:React.FC<BoardProps> = ({visible,className,onClose,style,...rest})=>
     left:position.right - width,
     bottom: window.innerHeight - position.top
   }) 
-  const {song} = useSong()
 
   const target = useCallback(()=>{
     const elements = document.getElementsByClassName('cloud-music-player-board-wrapper')
@@ -87,6 +90,7 @@ const Board:React.FC<BoardProps> = ({visible,className,onClose,style,...rest})=>
       fetch()
     }
   },[song])
+
 
   //最新评论API
   const newCommentsApi = useApi<IPaginationRes<ICommentType>>({url:'/comment/paging', method:'post'},{immediate:false})
@@ -169,17 +173,20 @@ const Board:React.FC<BoardProps> = ({visible,className,onClose,style,...rest})=>
     }
   }
 
+  //动态获取歌曲封面主色
+  const {r,g,b} = useColorThief(90)
+  const rgb = `rgb(${r},${g},${b})`
 
   return (
     <div className={classes} style={{...style,...innerStyle}} {...rest}>
       {
         visible
         ?
-        <BoardHeader visible={visible && scrollVisible}/>
+        <BoardHeader visible={visible && scrollVisible} style={{background:rgb}}/>
         :
         null
       }
-      <div className="cloud-music-player-board-wrapper" style={{paddingBottom : visible ? 68 : 0}}>
+      <div className="cloud-music-player-board-wrapper" style={{paddingBottom : visible ? 68 : 0,background:`linear-gradient(${rgb},#fff)`}}>
         <div className="cloud-music-player-board-title">
           <div className="cloud-music-player-board-name">{song?.name}</div>
           <div className="cloud-music-player-board-singer">{song?.singer}-{song?.album}</div>
