@@ -64,6 +64,7 @@ const Carousel: React.FC<CarouselProps> = ({ cards,className }) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
+    <div className="carousel-cards">
       {cards.map((card, index) => (
         <Card key={index} text={card.text} className={getClasses(index)}>
           <img src={card.img} />
@@ -83,6 +84,7 @@ const Carousel: React.FC<CarouselProps> = ({ cards,className }) => {
           onClick={() => step(1, 'manual')}
         />
       ) : null}
+      </div>
       <div className="carousel-bottom-dots">
         <Dots
           count={cards.length}
