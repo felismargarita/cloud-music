@@ -12,7 +12,7 @@ const Card: React.FC<CardProps> = ({ children, onClick, text, className }) => {
   return (
     <div className={classes} onClick={onClick}>
       {React.cloneElement(children as React.ReactElement, {
-        style: { width: '100%', height: '100%', borderRadius: '8px' },
+        style: { width: '100%', height: '100%'},
       })}
       <div className="carousel-card-text">{text}</div>
     </div>
